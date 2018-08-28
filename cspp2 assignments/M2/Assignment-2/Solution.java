@@ -6,9 +6,8 @@ import java.util.Scanner;
  * Class for solution.
  */
 public final class Solution {
-
     /**
-     * COnstant Four is 4
+     * COnstant Four is 4.
      */
     public static final int FOUR = 4;
 
@@ -28,8 +27,8 @@ public final class Solution {
      */
     static void rootsOfEquation(final int a, final int b, final int c) {
         double value = Math.sqrt((b * b - FOUR * a * c));
-        double root1 = (-b + value ) / (2 * a);
-        double root2 = (-b - value ) / (2 * a);
+        double root1 = (-b + value) / (2 * a);
+        double root2 = (-b - value) / (2 * a);
         System.out.println(root1 + " " + root2);
     }
     /**
