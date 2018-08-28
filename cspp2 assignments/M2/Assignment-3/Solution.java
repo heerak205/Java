@@ -15,8 +15,9 @@ public class Solution {
      * @return     { description_of_the_return_value }.
      */
     static long power(int base, int exponent) {
-        if (exponent == 0)
+        if (exponent == 0) {
             return 1;
+        }
         /**
          * { item_description }.
          */
@@ -31,10 +32,10 @@ public class Solution {
      * @param      args  The arguments
      */
     public static void main(final String[] args) {
-        Scanner s = new Scanner(System.in);      
+        Scanner s = new Scanner(System.in); 
         int base = s.nextInt();
         int exponent = s.nextInt();
-        long result = power(base,exponent);
+        long result = power(base, exponent);
         System.out.println(result);
     }
     /*
