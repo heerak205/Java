@@ -5,9 +5,11 @@ import java.util.Scanner;
 /**
  * Class for solution.
  */
-public class Solution {
-    private Solution(){
-        
+public final class Solution {
+    /**
+     * Constructs the object.
+     */
+    private Solution() {
     }
     /**
      * { function_description }.
