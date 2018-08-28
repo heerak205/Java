@@ -7,8 +7,11 @@ import java.util.Scanner;
  */
 public final class Solution {
 
-	final static int FOUR = 4;
-	
+	/**
+	 * COnstant Four is 4
+	 */
+	public static final int FOUR = 4;
+
 	/**
 	 * Constructs the object.
 	 */
