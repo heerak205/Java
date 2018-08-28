@@ -34,6 +34,6 @@ public class Solution {
 		rootsOfQuadraticEquation(a, b, c);
 	}
 	/*
-	Need to write the rootsOfQuadraticEquation function and print the output.
+	Need to write the rootsOfQuadraticEquation func
 	*/
 }
