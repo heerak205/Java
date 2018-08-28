@@ -13,9 +13,9 @@ public class Solution {
 	 * @param      b     { parameter_description }
 	 * @param      c     { parameter_description }
 	 */
-	static void rootsOfQuadraticEquation(int a, int b, int c){
-		double root1 = (-b + Math.sqrt((b * b - 4 * a * c)))/(2 * a);
-		double root2 = (-b - Math.sqrt((b * b - 4 * a * c)))/(2 * a);
+	static void rootsOfQuadraticEquation(int a, int b, int c) {
+		double root1 = (-b + Math.sqrt((b * b - 4 * a * c))) / (2 * a);
+		double root2 = (-b - Math.sqrt((b * b - 4 * a * c))) / (2 * a);
 		System.out.println(root1 + " " + root2);
 	}
 	/*
