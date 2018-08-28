@@ -6,15 +6,18 @@ import java.util.Scanner;
  * Class for solution.
  */
 public class Solution {
+    private Solution(){
+        
+    }
     /**
-     * { function_description }
+     * { function_description }.
      *
      * @param      base      The base
      * @param      exponent  The exponent
      *
      * @return     { description_of_the_return_value }.
      */
-    static long power(int base, int exponent) {
+    static long power(final int base, final int exponent) {
         if (exponent == 0) {
             return 1;
         }
@@ -32,7 +35,7 @@ public class Solution {
      * @param      args  The arguments
      */
     public static void main(final String[] args) {
-        Scanner s = new Scanner(System.in); 
+        Scanner s = new Scanner(System.in);
         int base = s.nextInt();
         int exponent = s.nextInt();
         long result = power(base, exponent);
