@@ -13,7 +13,7 @@ public class Solution {
 	 * @param      b     { parameter_description }
 	 * @param      c     { parameter_description }
 	 */
-	static final void rootsOfQuadraticEquation(int a, int b, int c) {
+	static void rootsOfQuadraticEquation(final int a, final int b, final int c) {
 		double root1 = (-b + Math.sqrt((b * b - 4 * a * c))) / (2 * a);
 		double root2 = (-b - Math.sqrt((b * b - 4 * a * c))) / (2 * a);
 		System.out.println(root1 + " " + root2);
@@ -23,7 +23,7 @@ public class Solution {
 	 *
 	 * @param      args  The arguments
 	 */
-	public static final void main(String[] args) {
+	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		int a = scan.nextInt();
 		int b = scan.nextInt();
