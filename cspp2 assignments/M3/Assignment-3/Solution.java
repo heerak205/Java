@@ -49,6 +49,7 @@ public final class Solution {
             r = temp_n2 % temp_n1;
             temp_n2 = temp_n1;
             temp_n1 = r;
+            System.out.println(temp_n1 + " " + temp_n2);
         }
 
         return n2;
