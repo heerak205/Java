@@ -31,26 +31,24 @@ public final class Solution {
         gcd(n1, n2);
         System.out.println(gcd(n1, n2));
     }
-    
-
     /**
-     * { function_description }
+     * { function_description }.
      *
      * @param      n1    The n 1
      * @param      n2    The n 2
      *
      * @return     { description_of_the_return_value }
      */
-    public static int gcd(final int n1,final int n2) {
+    public static int gcd(final int n1, final int n2) {
         int r = TEN;
-        int temp_n1 = n1;
-        int temp_n2 = n2;
+        int tempn1 = n1;
+        int tempn2 = n2;
         while (r > 0) {
-            r = temp_n2 % temp_n1;
-            temp_n2 = temp_n1;
-            temp_n1 = r;
+            r = tempn2 % tempn1;
+            tempn2 = tempn1;
+            tempn1 = r;
         }
 
-        return temp_n2;
+        return tempn2;
     }
 }
