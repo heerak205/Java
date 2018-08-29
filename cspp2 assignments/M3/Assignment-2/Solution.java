@@ -9,6 +9,17 @@ import java.util.Scanner;
  * Class for solution.
  */
 public class Solution {
+    /**
+     * Empty constructor.
+     */
+    private Solution() {
+    }
+    /**
+     * { var_description }.
+     */
+private static final int TEN = 10 ;
+
+private static final int SEVEN = 7 ;
 /* Fill the main function to print the number of 7's between 1 to n*/
 /**
  * { function_description }.
@@ -16,7 +27,6 @@ public class Solution {
  * @param      args  The arguments
  */
     public static void main(final String[] args) {
-
         Scanner s = new Scanner(System.in);
         int n = s.nextInt();
         int count = 0;
