@@ -11,7 +11,11 @@ import java.util.Scanner;
  */
 public final class Solution {
     /**
-     * { item_description }.
+     * { var_description }.
+     */
+    public static final int TEN = 100000;
+    /**
+     * Constructs the object.
      */
     private Solution() {
     }
@@ -39,7 +43,7 @@ public final class Solution {
      * @return     { description_of_the_return_value }
      */
     public static int gcd(int n1, int n2) {
-        int r = 100000;
+        int r = TEN;
         while (r > 0) {
             r = n2 % n1;
             n2 = n1;
