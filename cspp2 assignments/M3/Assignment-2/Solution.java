@@ -8,7 +8,7 @@ import java.util.Scanner;
 /**
  * Class for solution.
  */
-public class Solution {
+public final class Solution {
     /**
      * Empty constructor.
      */
@@ -17,9 +17,11 @@ public class Solution {
     /**
      * { var_description }.
      */
-private static final int TEN = 10 ;
-
-private static final int SEVEN = 7 ;
+private static final int TEN = 10;
+/**
+ * { var_description }.
+ */
+private static final int SEVEN = 7;
 /* Fill the main function to print the number of 7's between 1 to n*/
 /**
  * { function_description }.
