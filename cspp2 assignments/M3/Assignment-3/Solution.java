@@ -18,12 +18,11 @@ public class Solution {
 	*/
     public static int gcd(int n1, int n2){
         int r = 10000;
-        while(r >= 1){
+        while(r > 0){
             r = n2 % n1;
-            n1 = r;
             n2 = n1;
-
+            n1 = r;
         }
-        return n1;
+        return n2;
     }
 }
