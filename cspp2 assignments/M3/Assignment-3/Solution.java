@@ -14,6 +14,8 @@ public final class Solution {
      * { var_description }.
      */
     public static final int TEN = 100000;
+    public static final int N1 = 0;
+    public static final int N2 = 0;
     /**
      * Constructs the object.
      */
@@ -26,16 +28,15 @@ public final class Solution {
      */
     public static void main(final String[] args) {
         Scanner s = new Scanner(System.in);
-        int n1 = s.nextInt();
-        int n2 = s.nextInt();
+        int n1 = N1; 
+        n1 = s.nextInt();
+        int n2 = N2;
+        n2 = s.nextInt();
         gcd(n1, n2);
         System.out.println(gcd(n1, n2));
     }
-    /*
-    Need to write the gcd function and print the output.
-    */
     /**
-     * { function_description }.
+     * { function_description }
      *
      * @param      n1    The n 1
      * @param      n2    The n 2
@@ -49,6 +50,7 @@ public final class Solution {
             n2 = n1;
             n1 = r;
         }
+
         return n2;
     }
 }
