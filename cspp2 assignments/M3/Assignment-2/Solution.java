@@ -33,11 +33,11 @@ private static final int SEVEN = 7 ;
         for (int i = 1; i <= n; i++) {
             int temp = i;
             while (temp > 0) {
-                int r = temp % 10;
-                if (r == 7) {
+                int r = temp % TEN;
+                if (r == SEVEN) {
                     count = count + 1;
                 }
-                temp = temp / 10;
+                temp = temp / TEN;
             }
         }
         System.out.println(count);
