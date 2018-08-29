@@ -52,6 +52,6 @@ public final class Solution {
             System.out.println(temp_n1 + " " + temp_n2);
         }
 
-        return n2;
+        return temp_n2;
     }
 }
