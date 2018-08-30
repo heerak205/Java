@@ -1,10 +1,20 @@
-
+/**
+ * { imports all methods in utility package }.
+ */
 import java.util.*;
 public class Solution {
+    private Solution(){    
+    }
 /*
 Fill this main function to print maximum of given array
-*/
-    public static void main(String[] args) {
+*/  
+
+    /**
+     * { main fucntion }.
+     *
+     * @param      args  The arguments
+     */
+    public static void main(final String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         int a[] = new int[n];
