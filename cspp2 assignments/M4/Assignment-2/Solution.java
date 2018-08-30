@@ -12,9 +12,9 @@ public final class Solution {
      */
     public static final Scanner s = new Scanner(System.in);
     public static int[][] readMatrix(final int m, final int n) {
-        int a[][] = new int[m][n];
-        for(int i = 0; i < n; i++) {
-            for(int j = 0; j < n; j++) {
+        int[][] a = new int[m][n];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
                 a[i][j] = s.nextInt();
             }
             s.nextLine();
