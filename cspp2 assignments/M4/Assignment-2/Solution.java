@@ -48,17 +48,18 @@ public final class Solution {
                 res[i][j] = matrix1[i][j] + matrix2[i][j];
             }
         	}
+        	for (int i = 0; i < m1; i++) {
+            	for(int j =0; j < n1-1; j++) {
+               		System.out.print(res[i][j] + " ");
+            }
+            System.out.println(res[i][n1-1]);
+        }
         
         }
         else{
         	System.out.println("not possible");}
 
         
-        for (int i = 0; i < m1; i++) {
-            for(int j =0; j < n1-1; j++) {
-                System.out.print(res[i][j] + " ");
-            }
-            System.out.println(res[i][n1-1]);
-        }
+        
     }
 }
