@@ -1,11 +1,11 @@
 /**
- * { imports all methods in utility package }.
+ * { imports all Scanner method from utility package }.
  */
-import java.util.*;
+import java.util.Scanner;
 /**
  * Class for solution.
  */
-public class Solution {
+public final class Solution {
     /**
      * Constructs the object.
      */
