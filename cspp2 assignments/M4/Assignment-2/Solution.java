@@ -54,9 +54,10 @@ public final class Solution {
 
         
         for (int i = 0; i < m1; i++) {
-            for(int j =0; j < n1; j++) {
-                System.out.println(res[i][j]);
+            for(int j =0; j < n1-1; j++) {
+                System.out.print(res[i][j] + " ");
             }
+            System.out.println(res[i][n1-1]);
         }
     }
 }
