@@ -11,6 +11,14 @@ public final class Solution {
      * @param      n     { parameter_description }
      */
     public static final Scanner s = new Scanner(System.in);
+    /**
+     * Reads a matrix.
+     *
+     * @param      m     { parameter_description }
+     * @param      n     { parameter_description }
+     *
+     * @return     { description_of_the_return_value }
+     */
     public static int[][] readMatrix(final int m, final int n) {
         int[][] a = new int[m][n];
         for (int i = 0; i < n; i++) {
@@ -33,7 +41,7 @@ public final class Solution {
      *
      * @param      args  The arguments.
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         
         int m1 = s.nextInt();
         int n1 = s.nextInt();
