@@ -42,7 +42,6 @@ public final class Solution {
      * @param      args  The arguments.
      */
     public static void main(final String[] args) {
-        
         int m1 = s.nextInt();
         int n1 = s.nextInt();
         int[][] matrix1 = readMatrix(m1, n1);
@@ -62,7 +61,6 @@ public final class Solution {
             }
             System.out.println(res[i][n1 - 1]);
         }
-        
         }
         else {
         	System.out.println("not possible");
