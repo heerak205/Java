@@ -2,16 +2,18 @@
  * { imports all methods in utility package }.
  */
 import java.util.*;
+/**
+ * Class for solution.
+ */
 public class Solution {
     /**
      * Constructs the object.
      */
-    private Solution() {    
+    private Solution() {
     }
 /*
 Fill this main function to print maximum of given array
-*/  
-   /**
+*/  /**
      * { main fucntion }.
      *
      * @param      args  The arguments
