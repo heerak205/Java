@@ -3,13 +3,15 @@
  */
 import java.util.*;
 public class Solution {
-    private Solution(){    
+    /**
+     * Constructs the object.
+     */
+    private Solution() {    
     }
 /*
 Fill this main function to print maximum of given array
 */  
-
-    /**
+   /**
      * { main fucntion }.
      *
      * @param      args  The arguments
