@@ -13,8 +13,8 @@ public final class Solution {
     public static final Scanner s = new Scanner(System.in);
     public static int[][] readMatrix(final int m, final int n) {
         int a[][] = new int[m][n];
-        for(int i=0; i < n; i++) {
-            for(int j=0; j < n; j++) {
+        for(int i = 0; i < n; i++) {
+            for(int j = 0; j < n; j++) {
                 a[i][j] = s.nextInt();
             }
             s.nextLine();
@@ -42,9 +42,9 @@ public final class Solution {
         int n2 = s.nextInt();
         int[][] matrix2 = readMatrix(m2, n2);
         int[][] res = new int[m1][n1];
-        if ( m1==m2 && n1==n2) {
-            for(int i=0; i < m1; i++) {
-                for(int j=0; j < n1; j++) {
+        if ( m1 == m2 && n1 == n2) {
+            for(int i = 0; i < m1; i++) {
+                for(int j = 0; j < n1; j++) {
                 res[i][j] = matrix1[i][j] + matrix2[i][j];
             }
         	}
@@ -56,8 +56,9 @@ public final class Solution {
         }
         
         }
-        else{
-        	System.out.println("not possible");}
+        else {
+        	System.out.println("not possible"); 
+        }
 
         
         
