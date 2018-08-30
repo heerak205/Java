@@ -61,7 +61,8 @@ public final class Solution {
             }
             System.out.println(res[i][n1 - 1]);
         } 
-        System.out.println("not possible");
+        } else {
+        	System.out.println("not possible");
         }
     }
 }
