@@ -31,7 +31,8 @@ public class Solution {
 	}
 	//Write reverseString function
 	/**
-	a function for creating reverse of a string
+	a function for creating reverse of a string.
+	* @param s The arguments
 	*/
 	public static String reverseString(String s) {
 		String l = "";
