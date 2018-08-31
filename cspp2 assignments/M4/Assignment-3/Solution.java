@@ -14,24 +14,26 @@ public class Solution
 		sc.nextLine();
 		for(int i=0;i<=n;i++){
 			String s=sc.nextLine();
-			int res=binaryToDecimal(s);//Write binaryToDecimal function
+			String res=binaryToDecimal(s);//Write binaryToDecimal function
 			System.out.println(res);
 		}
 	}
-	public static int binaryToDecimal(String s){
+	public static String binaryToDecimal(String s){
 		// System.out.println(s);
 		int sum = 0;
 		int count = 0;
+		int res;
 		for(int i = s.length() - 1; i>=0; i--){
 			char p = s.charAt(i);
 			int l = Character.getNumericValue(p);
 			//System.out.print(l+"*");
-			// System.out.println(Math.pow(2, count));
+			//System.out.println(Math.pow(2, count));
 			sum = sum + (int)((Math.pow(2, count)) * l);
 			count = count + 1;
 
 		}
-		return sum;
+		res = (int) sum;
+		return String.valueOf(sum);
 	}
 
 }
