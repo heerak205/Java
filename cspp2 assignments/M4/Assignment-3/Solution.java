@@ -11,7 +11,7 @@ public class Solution
 	{
 		Scanner sc=new Scanner(System.in);
 		int n= sc.nextInt();
-		// sc.nextLine();
+		sc.nextLine();
 		for(int i=0;i<=n;i++){
 			String s=sc.nextLine();
 			String res=binaryToDecimal(s);//Write binaryToDecimal function
@@ -22,7 +22,7 @@ public class Solution
 		// System.out.println(s);
 		int sum = 0;
 		int count = 0;
-		int res;
+		// int res;
 		for(int i = s.length() - 1; i>=0; i--){
 			char p = s.charAt(i);
 			int l = Character.getNumericValue(p);
@@ -32,7 +32,7 @@ public class Solution
 			count = count + 1;
 
 		}
-		res = (int) sum;
+		// res = (int) sum;
 		return String.valueOf(sum);
 	}
 
