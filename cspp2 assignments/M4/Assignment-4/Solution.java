@@ -9,12 +9,10 @@ import java.util.Scanner;
  * Class for solution.
  */
 public final class Solution {
-    /*
-    Do not modify the main function 
-    */
     /**
-     * Constructs the object.
-     */
+    *Do not modify the main function
+    *Constructs the object.
+    */
     private Solution() {
     }
     /**
@@ -26,8 +24,7 @@ public final class Solution {
         Scanner sc = new Scanner(System.in);
         String s = sc.nextLine();
         String reverse = reverseString(s);
-        System.out.println(reverse);
-        
+        System.out.println(reverse);     
     }
     //Write reverseString function
     /**
