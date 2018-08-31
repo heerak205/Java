@@ -24,12 +24,13 @@ public final class Solution {
         Scanner sc = new Scanner(System.in);
         String s = sc.nextLine();
         String reverse = reverseString(s);
-        System.out.println(reverse);     
+        System.out.println(reverse);
     }
     //Write reverseString function
     /**
     a function for creating reverse of a string.
     * @param s The arguments
+    * @return l 
     */
     public static String reverseString(final String s) {
         String l = "";
