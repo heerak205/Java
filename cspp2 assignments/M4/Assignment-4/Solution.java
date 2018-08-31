@@ -30,7 +30,7 @@ public final class Solution {
     /**
     a function for creating reverse of a string.
     * @param s The arguments
-    * @return l 
+    * @return l
     */
     public static String reverseString(final String s) {
         String l = "";
