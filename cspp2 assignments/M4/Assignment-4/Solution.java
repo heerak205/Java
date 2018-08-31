@@ -8,8 +8,8 @@ import java.util.Scanner;
 /**
  * Class for solution.
  */
-public class Solution
-{/*
+public class Solution {  
+	/*
 	Do not modify the main function 
 	*/
 	/**
@@ -22,8 +22,7 @@ public class Solution
 	 *
 	 * @param      args  The arguments
 	 */
-	public static void main(String[] args)
-	{
+	public static void main(final String[] args) {
 		Scanner sc = new Scanner(System.in);
 		String s = sc.nextLine();
 		String reverse = reverseString(s);	
@@ -31,9 +30,12 @@ public class Solution
 		
 	}
 	//Write reverseString function
+	/**
+	a function for creating reverse of a string
+	*/
 	public static String reverseString(String s) {
 		String l = "";
-		for (int i=(s.length()-1); i>=0; i--) {
+		for (int i = (s.length() - 1); i >= 0; i--) {
 			l = l + s.charAt(i);
 		}
 		return l;
