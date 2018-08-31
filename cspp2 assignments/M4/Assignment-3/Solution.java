@@ -13,6 +13,11 @@ public class Solution {
     Do not modify this main function.
     */
     /**
+     * Constructs the object.
+     */
+    private Solution(){
+    }
+    /**
      * {main function}.
      *
      * @param      args  The arguments
@@ -46,7 +51,6 @@ public class Solution {
             //System.out.println(Math.pow(2, count));
             sum = sum + (int) ((Math.pow(2, count)) * l);
             count = count + 1;
-
         }
         // res = (int) sum;
         return String.valueOf(sum);
