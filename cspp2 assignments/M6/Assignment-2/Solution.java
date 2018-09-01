@@ -28,7 +28,8 @@ final class Solution {
         int maxi = 100;
         int mini = 50;
         for (int i = 0; i < rows; i++) {
-            for( int j = 0; j < columns; j++) {
+            for ( int j = 0; j < columns; j++)
+            {
                 int rem = a[i][j] % maxi;
                 //System.out.println(rem);
                 int num = a[i][j] / maxi;
