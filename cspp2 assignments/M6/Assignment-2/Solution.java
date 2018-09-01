@@ -12,6 +12,14 @@ final class Solution {
     private Solution() {
         //not used
     }
+/**
+ * { Giving value of 100 to Hundred }.
+ */
+private static final int HUNDRED = 100;
+/**
+ * { Giving value of 50 to Fifty }.
+ */
+private static final int FIFTY = 50;
     /**
      * Function to round the
      * elements of a matrix to the nearest 100.
@@ -25,8 +33,8 @@ final class Solution {
     static int[][] roundHundred(final int[][] a,
         final int rows, final int columns) {
     // write ypur code here
-        int maxi = 100;
-        int mini = 50;
+        int maxi = HUNDRED;
+        int mini = FIFTY;
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
                 int rem = a[i][j] % maxi;
@@ -38,7 +46,8 @@ final class Solution {
                     //System.out.println(a[i][j]);
                 }
                 else {
-                    a[i][j] = (num + 1) * maxi; }
+                    a[i][j] = (num + 1) * maxi; 
+                }
             }
         }
         return a;
