@@ -46,7 +46,7 @@ private static final int FIFTY = 50;
                     //System.out.println(a[i][j]);
                 } else {
                     a[i][j] = (num + 1) * maxi;
-                }   
+                }
             }
         }
         return a;
