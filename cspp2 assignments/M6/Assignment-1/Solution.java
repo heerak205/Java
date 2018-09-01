@@ -26,7 +26,7 @@ public final class Solution {
                     break;
                 }
             }
-        }        
+        }
     }
     /**
     * main method as driver program.
