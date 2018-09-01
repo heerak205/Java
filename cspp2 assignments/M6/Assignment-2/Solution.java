@@ -44,10 +44,10 @@ private static final int FIFTY = 50;
                 if (rem <= mini) {
                     a[i][j] = num * maxi;
                     //System.out.println(a[i][j]);
-                }
-                else {
+                } else {
                     a[i][j] = (num + 1) * maxi;
                 }
+                
             }
         }
         return a;
