@@ -22,13 +22,13 @@ final class Solution {
      *
      * @return     Matrix of the rounded elements
      */
-    static int[][] roundHundred(final int[][] a, 
+    static int[][] roundHundred(final int[][] a,
         final int rows, final int columns) {
     // write ypur code here
         int maxi = 100;
         int mini = 50;
         for (int i = 0; i < rows; i++) {
-            for ( int j = 0; j < columns; j++) {
+            for( int j = 0; j < columns; j++) {
                 int rem = a[i][j] % maxi;
                 //System.out.println(rem);
                 int num = a[i][j] / maxi;
@@ -43,7 +43,6 @@ final class Solution {
             }
         }
         return a;
-    
     }
     /**
      * Main function.
