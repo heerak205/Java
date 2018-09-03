@@ -19,7 +19,10 @@ class InputValidator {
     InputValidator(final String input) {
         this.input = input;
     }
-     private static final int SIX = 6;
+    /**
+     * {constant declaration}.
+     */
+    private static final int SIX = 6;
     /**
      * {function of return type boolean}.
      *
