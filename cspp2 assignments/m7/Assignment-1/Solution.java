@@ -16,8 +16,8 @@ class InputValidator {
      *
      * @param      input  The input
      */
-    InputValidator(final String input) {
-        this.input = input;
+    InputValidator(final String str) {
+        this.input = str;
     }
     /**
      * {constant declaration}.
@@ -47,9 +47,10 @@ public final class Solution {
     }
     /**
      * {main function}.
-     * @param args
+     *
+     * @param      args  The arguments
      */
-    public static void main(final String args[]) {
+    public static void main(final String[] args) {
         Scanner s = new Scanner(System.in);
         String input = s.next();
         InputValidator i = new InputValidator(input);
