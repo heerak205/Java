@@ -35,9 +35,15 @@ class InputValidator {
  */
 public class Solution {
     /**
-     * {main function}.
+     * Constructs the object.
      */
-    public static void main(String args[]) {
+    private Solution(){        
+    }
+    /**
+     * {main function}.
+     * @param args
+     */
+    public static void main(final String args[]) {
         Scanner s = new Scanner(System.in);
         String input = s.next();
         InputValidator i = new InputValidator(input);
