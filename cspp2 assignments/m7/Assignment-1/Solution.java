@@ -1,21 +1,22 @@
 /**
  * {imports all the utilities}.
  */
-import java.util.*;
+import java.util.Scanner;
 /**
  * Class for input validator.
  */
 class InputValidator {
     /*Write the atrributes and methods for InputValidator*/
-    String input;
+    private String input;
     /**
      * Constructs the object.
      *
      * @param      input  The input
      */
-    InputValidator(String input) {
+    InputValidator(final String input) {
         this.input = input;
     }
+     private static final int SIX = 6;
     /**
      * {function of return type boolean}.
      *
@@ -23,7 +24,7 @@ class InputValidator {
      */
     public boolean validateData() {
         int size = this.input.length();
-        if (size >= 6) {
+        if (size >= SIX) {
             return true;
         }
         return false;
