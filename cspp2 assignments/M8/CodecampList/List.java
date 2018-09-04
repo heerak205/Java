@@ -11,6 +11,9 @@ import java.util.Scanner;
  */
 public class List {
     //Implement all the methods mentioned to build a ListADT
+    /**
+     * {an array of int type}.
+     */
     private int[] a;
     /**
      * {declaration of size variable with type int}.
@@ -90,6 +93,9 @@ public class List {
 
 
     }
+    /**
+     * {Declring TEN to the number 10}.
+     */
     private static final int TEN = 10;
 
     /*
