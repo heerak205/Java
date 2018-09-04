@@ -70,7 +70,6 @@ public class List {
     /**
      * Constructs the object.
      */
-    private static int TEN = 10;
     public List() {
 
         // what are the two variables to be initialized here?
@@ -88,6 +87,7 @@ public class List {
 
 
     }
+    private static final int TEN = 10;
 
     /*
      * The add method does what the name suggests.
