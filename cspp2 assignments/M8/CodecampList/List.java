@@ -12,6 +12,9 @@ import java.util.Scanner;
 public class List {
     //Implement all the methods mentioned to build a ListADT
     private int[] a;
+    /**
+     * {declaration of size variable with type int}.
+     */
     private int size;
     /*
      * The goal for the list is to store items.
