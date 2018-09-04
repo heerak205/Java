@@ -13,7 +13,6 @@ public class List {
     //Implement all the methods mentioned to build a ListADT
     private int[] a;
     private int size;
-
     /*
      * The goal for the list is to store items.
      * How are we going to store the items in the list?
@@ -71,6 +70,7 @@ public class List {
     /**
      * Constructs the object.
      */
+    private static int TEN = 10;
     public List() {
 
         // what are the two variables to be initialized here?
@@ -83,7 +83,7 @@ public class List {
         // How many items do we have in the list when you create it?
         // An empty list has how many items?
         // That is the initial value to use for size.
-        a = new int[10];
+        a = new int[TEN];
         size = 0;
 
 
@@ -105,7 +105,7 @@ public class List {
      *
      * @param      item  The item
      */
-    public void add(int item) {
+    public void add(final int item) {
         //Inserts the specified element at the end of the lit.
         a[size] = item;
         size += 1;
@@ -153,11 +153,11 @@ public class List {
      *
      * @param      index  The index
      */
-    public void remove(int index) {
+    public void remove(final int index) {
         // write the logic for remove here.
         // Think about what to do to the size variable.
         if (index >= 0 && index < size) {
-            for (int i = index; i < size; i++ ) {
+            for (int i = index; i < size; i++) {
                 a[i] = a[i + 1];
             }
             size--;
@@ -184,7 +184,7 @@ public class List {
      *
      * @return     { description_of_the_return_value }
      */
-    public int get(int index) {
+    public int get(final int index) {
         // Replace the code below to write the code for get
         if (index >= 0 & index < size) {
             return a[index];
@@ -262,9 +262,9 @@ public class List {
      *
      * @return     { description_of_the_return_value }
      */
-    public int indexOf(int item) {
+    public int indexOf(final int item) {
         // Replace the code below
-        for (int i = 0; i < size ; i++ ) {
+        for (int i = 0;i < size ;i++) {
             if (a[i] == item) {
                 return i;
             }
