@@ -148,7 +148,12 @@ public class List {
         }
         a[index] = item;
     }
-    public void addAll(int[] items) {
+    /**
+     * Adds all.
+     *
+     * @param      items  The items
+     */
+    public void addAll(final int[] items) {
         for (int b:items) {
             a[size] = b;
             size += 1;
