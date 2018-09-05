@@ -136,9 +136,9 @@ public class List {
         // replace the code below to implement the size method
         return size;
     }
-    public void add(int index, int item){
-        for(int i = index; i<=size; i++){
-            a[i + 1] = a[i]; 
+    public void add(int index, int item) {
+        for (int i = index; i<=size; i++) {
+            a[i + 1] = a[i];
         }
         a[index] = item;
     }
@@ -148,10 +148,17 @@ public class List {
             size += 1;
         }   
     }
-    public int count(int item){
+    /**
+     * {adds a given item to the list}.
+     *
+     * @param      item  The item
+     *
+     * @return     { description_of_the_return_value }
+     */
+    public int count(final int item) {
         int count = 0;
-        for(int p : a) { 
-            if(p == item) {
+        for (int p : a) {
+            if (p == item) {
                 count += 1;
             }
         }
