@@ -136,17 +136,23 @@ public class List {
         // replace the code below to implement the size method
         return size;
     }
-    public void add(int index, int item) {
-        for (int i = index; i<=size; i++) {
+    /**
+     * {function to add an item at the given index}.
+     *
+     * @param      index  The index
+     * @param      item   The item
+     */
+    public void add(final int index, final int item) {
+        for (int i = index; i <= size; i++) {
             a[i + 1] = a[i];
         }
         a[index] = item;
     }
-    public void addAll(int[] items){
-        for(int b:items) {
+    public void addAll(int[] items) {
+        for (int b:items) {
             a[size] = b;
             size += 1;
-        }   
+        }
     }
     /**
      * {adds a given item to the list}.
