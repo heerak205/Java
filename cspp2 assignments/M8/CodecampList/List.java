@@ -136,6 +136,28 @@ public class List {
         // replace the code below to implement the size method
         return size;
     }
+    public void add(int index, int item){
+        for(int i = index; i<=size; i++){
+            a[i + 1] = a[i]; 
+        }
+        a[index] = item;
+    }
+    public void addAll(int[] items){
+        for(int b:items) {
+            a[size] = b;
+            size += 1;
+        }   
+    }
+    public int count(int item){
+        int count = 0;
+        for(int p : a) { 
+            if(p == item) {
+                count += 1;
+            }
+        }
+        return count;
+    }
+
 
     /*
      * The remove method does what the name suggests.
