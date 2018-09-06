@@ -248,7 +248,7 @@ public class List {
      */
     public String toString() {
         if (size == 0)
-            return "";
+            return "[]";
         String str = "[";
         int i = 0;
         for (i = 0; i < size - 1; i++) {
@@ -301,8 +301,7 @@ public class List {
         System.arraycopy(list, 0, temp, 0, size);
         for (int i = index; i < size; i++) {
             //System.out.println(temp[i] + "HI" + i);
-            list[i + 1] = temp[i] ;
-
+            list[i + 1] = temp[i];
         }
         list[index] = item;
         size++;
