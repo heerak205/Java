@@ -217,8 +217,8 @@ public class List<E> {
      */
     public boolean contains(E item) {
         //Write logic for contains method
-        for (E a : list) {
-            if (a.equals(item)) {
+        for (int i=0;i<size;i++) {
+            if (list[i].equals(item)) {
                 return true;
             }
         }
