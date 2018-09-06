@@ -4,6 +4,9 @@ import java.util.Scanner;
  * class list.
  */
 public class List {
+    /**
+     * {declaration of 10 to TEN}.
+     */
     public static final int TEN = 10;
     //Implement all the methods mentioned to build a ListADT
     /*
@@ -30,6 +33,10 @@ public class List {
     // declare a private int[]
     // don't create the array yet using new
     // that's the job of the List constructor
+    
+    /**
+     * {declaration of array of return type int}.
+     */
     private int[] list;
     /*
      * What are the other class variables needed for creating a list?
@@ -143,7 +150,7 @@ public class List {
      * Use java.util.Arrays.copyOf(...) methods which returns a bigger array,
      * with the contents of the original array.
      * TODO
-     * Create a method called resize(). Resize should 
+     * Create a method called resize(). Resize should
      * create an new array that is
      * double the size of the old array.
      * Then copy the contents of the old array to the new one.
@@ -151,7 +158,7 @@ public class List {
      * Will the client invoke resize or is it internal to List class?
      * Should the resize be public method or private?
      * Should the resize method return any values?
-     * You know enough of Object Oriented Programming to 
+     * You know enough of Object Oriented Programming to
      * answer these questions :-)
      */
     // todo create resize method
@@ -281,7 +288,7 @@ public class List {
      * @return     String representation of the object.
      */
     public String toString() {
-        if(size == 0){
+        if (size == 0) {
             return "[]";
         }
         String str = "[";
@@ -325,7 +332,7 @@ public class List {
      */
     public int indexOf(final int item) {
         for (int i = 0; i < size; i++) {
-            if(item == list[i]){
+            if (item == list[i]) {
                 return i;
             }
         }
@@ -412,9 +419,10 @@ public class List {
                     if (t.length == 1) {
                         l.add(Integer.parseInt(tokens[1]));
                     } else {
-                        if (t.length > 1)
-                            l.add(Integer.parseInt(t[0]), 
+                        if (t.length > 1){
+                            l.add(Integer.parseInt(t[0]),
                                 Integer.parseInt(t[1]));
+                        }
                     }
                 }
                 break;
@@ -424,8 +432,8 @@ public class List {
             case "addAll":
                 if (tokens.length == 2) {
                     String[] t1 = tokens[1].split(",");
-                    int [] temp = new int[t1.length];
-                    for (int i = 0; i < temp.length; i++){
+                    int[] temp = new int[t1.length];
+                    for (int i = 0; i < temp.length; i++) {
                         temp[i] = Integer.parseInt(t1[i]);
                     }
                     l.addAll(temp);
