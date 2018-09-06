@@ -300,8 +300,8 @@ public class List {
         for (int i = index; i <= size; i++) {
             list[i + 1] = list[i];
         }
-        size++;
         list[index] = item;
+        size++;
     }
 
     /* Returns the count of occurances of a given item in the list*/
