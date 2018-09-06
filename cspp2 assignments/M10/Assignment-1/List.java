@@ -298,8 +298,8 @@ public class List {
     public void add(int index, int item) {
         // write the logic
         for (int i = index; i < size; i++) {
-            int p = list[i];
-            list[i + 1] = p;
+            int [] temp = list;
+            list[i + 1] = temp[i] ;
         }
         list[index] = item;
         size++;
