@@ -297,7 +297,7 @@ public class List {
         */
     public void add(int index, int item) {
         // write the logic
-        for (int i = index; i <= size; i++) {
+        for (int i = index; i < size; i++) {
             list[i + 1] = list[i];
         }
         list[index] = item;
