@@ -297,9 +297,12 @@ public class List {
         */
     public void add(int index, int item) {
         // write the logic
+        int [] temp = new int[size];
+        System.arraycopy(list, 0, temp, 0, size);
         for (int i = index; i < size; i++) {
-            int [] temp = list;
+            //System.out.println(temp[i] + "HI" + i);
             list[i + 1] = temp[i] ;
+
         }
         list[index] = item;
         size++;
