@@ -33,7 +33,6 @@ public class List {
     // declare a private int[]
     // don't create the array yet using new
     // that's the job of the List constructor
-    
     /**
      * {declaration of array of return type int}.
      */
@@ -419,7 +418,7 @@ public class List {
                     if (t.length == 1) {
                         l.add(Integer.parseInt(tokens[1]));
                     } else {
-                        if (t.length > 1){
+                        if (t.length > 1) {
                             l.add(Integer.parseInt(t[0]),
                                 Integer.parseInt(t[1]));
                         }
