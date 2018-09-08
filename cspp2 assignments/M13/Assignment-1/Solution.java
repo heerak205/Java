@@ -62,14 +62,15 @@ class Set {
     public void add(final int[] newArray) {
         int count = 0;
         for (int i = 0; i < newArray.length; i++) {
+            count = 0;
             for (int j = 0; j < size; j++) {
                 if (newArray[i] == set[j]) {
                     count = count + 1;
                 }
             }
             if (count == 0) {
-                set[size] = newArray[i];
-                size++;
+                set[size++] = newArray[i];
+                //System.out.println("hi");
             }
         }
     }
