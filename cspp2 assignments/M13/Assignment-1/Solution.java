@@ -11,7 +11,10 @@ class Set {
     //Good luck :-)
     //your code goes here...
     //Good luck :-)
-    
+    /**
+     * {final int number}.
+     */
+    private final int num = 10;
     /**
      * {declaration of an array of type int}.
      */
@@ -24,7 +27,7 @@ class Set {
      * Constructs the object.
      */
     public Set() {
-        set = new int[10];
+        set = new int[num];
         size = 0;
     }
     /**
@@ -32,7 +35,7 @@ class Set {
      *
      * @param      item  The item
      */
-    public void add(int item) {
+    public void add(final int item) {
         int count = 0;
         for (int i = 0; i < size; i++) {
             if (set[i] == item) {
