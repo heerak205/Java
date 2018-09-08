@@ -54,7 +54,7 @@ class Set {
 
         String str = "{";
         for (int i = 0; i < size - 1; i++) {
-            str += set[i] + ",";
+            str += set[i] + "," + " ";
         }
         str += set[size - 1] + "}";
         return str;
