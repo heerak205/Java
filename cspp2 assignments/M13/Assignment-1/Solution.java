@@ -4,20 +4,34 @@ import java.util.Arrays;
 
 /**
  * Class for set.
- * @author : 
+ * @author :Heerak
  */
 class Set {
     //your code goes here...
     //Good luck :-)
-    
     //your code goes here...
     //Good luck :-)
+    
+    /**
+     * {declaration of an array of type int}.
+     */
     private int[] set;
+    /**
+     * {declaration of size of type int}.
+     */
     private int size;
+    /**
+     * Constructs the object.
+     */
     public Set() {
         set = new int[10];
         size = 0;
     }
+    /**
+     * {method to add te given item}.
+     *
+     * @param      item  The item
+     */
     public void add(int item) {
         int count = 0;
         for (int i = 0; i < size; i++) {
@@ -29,9 +43,19 @@ class Set {
         }
 
     }
+    /**
+     * {method to return size}.
+     *
+     * @return     { description_of_the_return_value }
+     */
     public int size() {
         return size;
     }
+    /**
+     * {method to have a dynamic size}.
+     *
+     * @return     { description_of_the_return_value }
+     */
     public int[] resize() {
         int[] set2 = new int[size * 2];
         for (int i = 0; i < size; i++) {
@@ -39,6 +63,14 @@ class Set {
         }
         return set2;
     }
+    /**
+     * {method to return boolean type
+     * on wether the given item is present or not}.
+     *
+     * @param      item  The item
+     *
+     * @return     { description_of_the_return_value }
+     */
     public boolean contains(final int item) {
         for (int i = 0; i < size; i++) {
             if (set[i] == item) {
@@ -47,6 +79,11 @@ class Set {
         }
         return false;
     }
+    /**
+     * Returns a string representation of the object.
+     *
+     * @return     String representation of the object.
+     */
     public String toString() {
         if (size == 0) {
             return "{}";
@@ -59,6 +96,12 @@ class Set {
         str += set[size - 1] + "}";
         return str;
     }
+    /**
+     * {method to add the items from the given array
+     * and shouldnt be repeated}.
+     *
+     * @param      newArray  The new array
+     */
     public void add(final int[] newArray) {
         int count = 0;
         for (int i = 0; i < newArray.length; i++) {
