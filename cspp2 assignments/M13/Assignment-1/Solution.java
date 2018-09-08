@@ -59,7 +59,7 @@ class Set {
         str += set[size - 1] + "}";
         return str;
     }
-    public void addAll(final int[] newArray) {
+    public void add(final int[] newArray) {
         int count = 0;
         for (int i = 0; i < newArray.length; i++) {
             for (int j = 0; j < size; j++) {
@@ -135,7 +135,7 @@ public final class Solution {
                 if (intArray.length == 1) {
                     s.add(intArray[0]);
                 } else {
-                    s.add(intArray[1]);
+                    s.add(intArray);
                 }
                 break;
                 /**
