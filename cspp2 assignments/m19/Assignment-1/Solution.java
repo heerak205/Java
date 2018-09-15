@@ -44,8 +44,18 @@ public final class Solution {
     /**
     * Constructs the object.
     */
+
+    /**
+     * {final int 5 declaration}.
+     */
     public static final int FIVE = 5;
+    /**
+     * {final int 4 declaration}.
+     */
     public static final int FOUR = 4;
+    /**
+     * {final int 3 declaration}.
+     */
     public static final int THREE = 3;
     private Solution() {
         // leave this blank
