@@ -57,6 +57,9 @@ public final class Solution {
      * {final int 3 declaration}.
      */
     public static final int THREE = 3;
+    /**
+     * Constructs the object.
+     */
     private Solution() {
         // leave this blank
     }
