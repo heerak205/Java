@@ -44,6 +44,9 @@ public final class Solution {
     /**
     * Constructs the object.
     */
+    public static final int FIVE = 5;
+    public static final int FOUR = 4;
+    public static final int THREE = 3;
     private Solution() {
         // leave this blank
     }
@@ -114,25 +117,25 @@ public final class Solution {
         String[] error = a.split(":");
         String[] errorPoint = error[1].split(",");
         int number = Integer.parseInt(error[2]);
-        if (error[0] == null || error.length < 5 || error[0].length() == 0) {
+        if (error[0] == null || error.length < FIVE || error[0].length() == 0) {
             System.out.println("Error! Malformed question");
             return;
         }
-        int penalityError = Integer.parseInt(error[4]);
+        int penalityError = Integer.parseInt(error[FOUR]);
         if (penalityError > 0) {
             System.out.println("Invalid penalty for " + error[0]);
             return;
         }
-        int scoreError = Integer.parseInt(error[3]);
+        int scoreError = Integer.parseInt(error[THREE]);
         if (scoreError < 0) {
             System.out.println("Invalid max marks for " + error[0]);
             return;
         }
-        if (errorPoint.length < 4) {
+        if (errorPoint.length < FOUR) {
             System.out.println(error[0] + " does not have enough answer choices");
             return;
         }
-        if (number > 4) {
+        if (number > FOUR) {
             System.out.
             println("Error! Correct answer choice number is out of range for question text 1");
             return;
