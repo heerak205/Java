@@ -144,7 +144,7 @@ public final class Solution {
             return;
         }
         if (errorPoint.length < FOUR) {
-            System.out.println(error[0] + 
+            System.out.println(error[0] +
                 " does not have enough answer choices");
             return;
         }
