@@ -196,11 +196,12 @@ class Quiz {
         for (Question question : getQuestions()) {
             s += question.getQuestionText() + '\n' + ' ';
             if (question.evaluateResponse(question.getResponse())) {
-                s += "Correct Answer! " + '-' + " Marks Awarded: " + question.getMaxMarks();
+                s += "Correct Answer! " + '-' + " Marks Awarded: " 
+                + question.getMaxMarks();
                 marks += question.getMaxMarks();
             } else {
-                s += "Wrong Answer! " + '-' +
-                 " Penalty: " + question.getPenalty();
+                s += "Wrong Answer! " + '-' 
+                + " Penalty: " + question.getPenalty();
                 marks += question.getPenalty();
             }
             s += '\n';
@@ -283,6 +284,7 @@ public final class Solution {
         // write your code here to read the questions from the console
         // tokenize the question line and create the question object
         // add the question objects to the quiz class
+        final int three = 3, five = 5, one = 1, two = 2, four = 4, zero = 0;
         if (q == 0) {
             throw new Exception("Quiz does not have questions");
         }
@@ -293,26 +295,26 @@ public final class Solution {
                     throw new Exception("Error! Malformed question");
                 }
             }
-            if (tokens.length < 5) {
+            if (tokens.length < five) {
                 throw new Exception("Error! Malformed question");
             }
-            if (tokens[1].split(",").length < 2) {
+            if (tokens[1].split(",").length < two) {
                 throw new Exception(tokens[0] + 
                     " does not have enough answer choices");
             }
             if (Integer.parseInt(tokens[2]) > tokens[1].split(",").length) {
-                throw new Exception (
+                throw new Exception(
                     "Error! Correct answer choice number is out of range for question text "
                      + (i + 1));
             }
-            if (Integer.parseInt(tokens[3]) < 0) {
+            if (Integer.parseInt(tokens[three]) < 0) {
                 throw new Exception("Invalid max marks for " + tokens[0]);
             }
-            if (Integer.parseInt(tokens[4]) > 0) {
+            if (Integer.parseInt(tokens[four]) > 0) {
                 throw new Exception("Invalid penalty for " + tokens[0]);
             }
-            quiz.addQuestion(new Question(tokens[0], tokens[1].split(","),
-             Integer.parseInt(tokens[2]), Integer.parseInt(tokens[3]), Integer.parseInt(tokens[4])));
+            quiz.addQuestion(new Question(tokens[0], tokens[one].split(","),
+             Integer.parseInt(tokens[two]), Integer.parseInt(tokens[three]), Integer.parseInt(tokens[four])));
             // System.out.println(i);
         }
         System.out.println(q + " are added to the quiz");
