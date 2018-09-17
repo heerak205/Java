@@ -280,8 +280,9 @@ public final class Solution {
      *
      * @param      scan       The scan
      * @param      quiz       The quiz
-     * @param      q          The question count
-     * @throws     
+     * @param      q          The quarter
+     *
+     * @throws     Exception  { exception }.
      */
     public static void loadQuestions(final Scanner scan,
         final Quiz quiz, final int q) throws Exception {
