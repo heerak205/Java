@@ -141,6 +141,7 @@ class Quiz {
     /**
      * { var_description }.
      */
+    final int ten = 10;
     private final int onehundred = 100;
     /**
      * { var_description }.
@@ -154,7 +155,7 @@ class Quiz {
      * Constructs the object.
      */
     Quiz() {
-        questions = new Question[10];
+        questions = new Question[ten];
         size = 0;
     }
     /**
@@ -192,7 +193,6 @@ class Quiz {
     public String showReport() {
         String s = "";
         int marks = 0;
-
         for (Question question : getQuestions()) {
             s += question.getQuestionText() + '\n' + ' ';
             if (question.evaluateResponse(question.getResponse())) {
@@ -304,7 +304,8 @@ public final class Solution {
             }
             if (Integer.parseInt(tokens[2]) > tokens[1].split(",").length) {
                 throw new Exception(
-                    "Error! Correct answer choice number is out of range for question text "
+                    "Error! Correct answer choice" 
+                    + "number is out of range for question text "
                      + (i + 1));
             }
             if (Integer.parseInt(tokens[three]) < 0) {
@@ -314,7 +315,8 @@ public final class Solution {
                 throw new Exception("Invalid penalty for " + tokens[0]);
             }
             quiz.addQuestion(new Question(tokens[0], tokens[one].split(","),
-             Integer.parseInt(tokens[two]), Integer.parseInt(tokens[three]), Integer.parseInt(tokens[four])));
+             Integer.parseInt(tokens[two]),
+              Integer.parseInt(tokens[three]), Integer.parseInt(tokens[four])));
             // System.out.println(i);
         }
         System.out.println(q + " are added to the quiz");
