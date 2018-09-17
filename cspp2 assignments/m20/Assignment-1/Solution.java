@@ -303,12 +303,12 @@ public final class Solution {
                 throw new Exception("Error! Malformed question");
             }
             if (tokens[1].split(",").length < two) {
-                throw new Exception(tokens[0] 
+                throw new Exception(tokens[0]
                     + " does not have enough answer choices");
             }
             if (Integer.parseInt(tokens[2]) > tokens[1].split(",").length) {
                 throw new Exception(
-                    "Error! Correct answer choice" + " " 
+                    "Error! Correct answer choice" + " "
                     + "number is out of range for question text "
                      + (i + 1));
             }
