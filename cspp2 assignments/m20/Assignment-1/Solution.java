@@ -43,7 +43,8 @@ class Question {
      * @param      penalty1        The penalty 1
      */
     Question(final String question1, final String[] choices1,
-        final int correctAnswerIndex1, final int maxMarks1, final int penalty1) {
+        final int correctAnswerIndex1,
+         final int maxMarks1, final int penalty1) {
         this.questiontext = question1;
         this.choices = choices1;
         this.correctAnswerIndex = correctAnswerIndex1;
@@ -68,7 +69,7 @@ class Question {
      * @return     The correct answer.
      */
     public String getCorrectAnswer() {
-        return choices[correctAnswerIndex-1];
+        return choices[correctAnswerIndex - 1];
     }
     /**
      * Gets the question text.
@@ -125,7 +126,7 @@ class Question {
      */
     public String toString() {
         String s = "";
-        s += questiontext+'(' + maxMarks + ')' + '\n';
+        s += questiontext + '(' + maxMarks + ')' + '\n';
         for (String choice : choices) {
             s += choice + '\t';
         }
@@ -174,7 +175,11 @@ class Quiz {
     public Question getQuestion(final int index) {
         return questions[index];
     }
-
+    /**
+     * Gets the questions.
+     *
+     * @return     The questions.
+     */
     public Question[] getQuestions() {
         // System.out.println(Arrays.toString(Arrays.copyOf(questions, size)));
         return Arrays.copyOf(questions, size);
@@ -193,9 +198,9 @@ class Quiz {
             if (question.evaluateResponse(question.getResponse())) {
                 s += "Correct Answer! " + '-' + " Marks Awarded: " + question.getMaxMarks();
                 marks += question.getMaxMarks();
-            }
-            else {
-                s += "Wrong Answer! " + '-' + " Penalty: " + question.getPenalty();
+            } else {
+                s += "Wrong Answer! " + '-' +
+                 " Penalty: " + question.getPenalty();
                 marks += question.getPenalty();
             }
             s += '\n';
@@ -241,12 +246,10 @@ public final class Solution {
                 System.out.println("|----------------|");
                 try {
                     loadQuestions(s, q, Integer.parseInt(tokens[1]));
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     System.out.println(e.getMessage());
                     flag = false;
                 }
-
                 break;
                 case "START_QUIZ":
                 System.out.println("|------------|");
@@ -289,16 +292,18 @@ public final class Solution {
                 if (token.equals("")) {
                     throw new Exception("Error! Malformed question");
                 }
-            }     
+            }
             if (tokens.length < 5) {
                 throw new Exception("Error! Malformed question");
             }
             if (tokens[1].split(",").length < 2) {
-                throw new Exception(tokens[0] + " does not have enough answer choices");
+                throw new Exception(tokens[0] + 
+                    " does not have enough answer choices");
             }
             if (Integer.parseInt(tokens[2]) > tokens[1].split(",").length) {
-                throw new Exception
-                ("Error! Correct answer choice number is out of range for question text "+(i+1));
+                throw new Exception (
+                    "Error! Correct answer choice number is out of range for question text "
+                     + (i + 1));
             }
             if (Integer.parseInt(tokens[3]) < 0) {
                 throw new Exception("Invalid max marks for " + tokens[0]);
