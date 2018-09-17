@@ -1,4 +1,5 @@
-import java.util.*;
+import java.util.Scanner;
+import java.util.Arrays;
 /**
  * Class for question.
  */
@@ -139,16 +140,19 @@ class Question {
  */
 class Quiz {
     /**
-     * { var_description }.
+     * {description of integer 10 in words}.
      */
-    final int ten = 10;
+    private final int ten = 10;
+    /**
+     * {description of int 100 int words}.
+     */
     private final int onehundred = 100;
     /**
-     * { var_description }.
+     * {array of questions}.
      */
     private Question[] questions;
     /**
-     * { var_description }.
+     * {declaration of integer size}.
      */
     private int size;
     /**
@@ -196,11 +200,11 @@ class Quiz {
         for (Question question : getQuestions()) {
             s += question.getQuestionText() + '\n' + ' ';
             if (question.evaluateResponse(question.getResponse())) {
-                s += "Correct Answer! " + '-' + " Marks Awarded: " 
+                s += "Correct Answer! " + '-' + " Marks Awarded: "
                 + question.getMaxMarks();
                 marks += question.getMaxMarks();
             } else {
-                s += "Wrong Answer! " + '-' 
+                s += "Wrong Answer! " + '-'
                 + " Penalty: " + question.getPenalty();
                 marks += question.getPenalty();
             }
@@ -299,12 +303,12 @@ public final class Solution {
                 throw new Exception("Error! Malformed question");
             }
             if (tokens[1].split(",").length < two) {
-                throw new Exception(tokens[0] + 
-                    " does not have enough answer choices");
+                throw new Exception(tokens[0] 
+                    + " does not have enough answer choices");
             }
             if (Integer.parseInt(tokens[2]) > tokens[1].split(",").length) {
                 throw new Exception(
-                    "Error! Correct answer choice" 
+                    "Error! Correct answer choice" + " " 
                     + "number is out of range for question text "
                      + (i + 1));
             }
