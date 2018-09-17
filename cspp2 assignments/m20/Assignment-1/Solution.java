@@ -281,7 +281,7 @@ public final class Solution {
      * @param      scan       The scan
      * @param      quiz       The quiz
      * @param      q          The question count
-     * @throws DummyException
+     * @throws Expection @throws tag for 'Exception'Exception
      */
     public static void loadQuestions(final Scanner scan,
         final Quiz quiz, final int q) throws Exception {
