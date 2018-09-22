@@ -24,8 +24,9 @@ class Task {
      * @param      urgent1          The urgent 1
      * @param      status1          The status 1
      */
-    Task(String title1, String assignedTo1, int timeToComplete1, boolean important1,
-         boolean urgent1, String status1) throws Exception {
+    Task(final String title1, final String assignedTo1,
+     final int timeToComplete1, final boolean important1,
+         final boolean urgent1, final String status1) throws Exception {
         this.title = title1;
         this.assignedTo = assignedTo1;
         this.timeToComplete = timeToComplete1;
@@ -34,13 +35,13 @@ class Task {
         this.status = status1;
         if (title.equals("")) {
             throw new Exception("Title not provided");
-        } 
+        }
         if (timeToComplete < 0) {
             throw new Exception("Invalid timeToComplete " + timeToComplete);
-        } 
+        }
         if (!status.equals("todo") && !status.equals("done")) {
             throw new Exception("Invalid status " + status);
-        } 
+        }
     }
     /**
      * Returns a string representation of the object.
@@ -50,15 +51,15 @@ class Task {
     public String toString() {
         String ni = "Not Important";
         String nu = "Not Urgent";
-        if(important) {
+        if (important) {
             ni = "Important";
-        } 
-        if(urgent) {
+        }
+        if (urgent) {
             nu = "Urgent";
         }
         String objdisplay = title + ", " +
-         assignedTo+", "+ timeToComplete+", "+
-          ni+", "+ nu+", "+ status;
+         assignedTo + ", " + timeToComplete + ", " + 
+          ni + ", " + nu + ", " + status;
         return objdisplay;
     }
 }
@@ -66,22 +67,39 @@ class Task {
  * Class for todoist.
  */
 class Todoist {
-    Task[] taskarray;
-    int size;
+    /**
+     * {declaration of array type Task}.
+     */
+    private Task[] taskarray;
+    /**
+     * {declaration of size of int type}.
+     */
+    private int size;
+    /**
+     * Constructs the object.
+     */
     Todoist() {
-        taskarray = new Task[10];
+        final int ten = 10;
+        taskarray = new Task[ten];
         size = 0;
     }
-    public void addTask(Task task) {
-        try{
+    /**
+     * Adds a task.
+     *
+     * @param      task  The task
+     */
+    public void addTask(final Task task) {
+        try {
             taskarray[size] = task;
             size++;
         } catch (Exception e) {
             resize();
             addTask(task);
-        }
-        
+        }     
     }
+    /**
+     * {function to resize}.
+     */
     void resize() {
         taskarray = Arrays.copyOf(taskarray, 2 * size);
     }
@@ -92,10 +110,10 @@ class Todoist {
      *
      * @return     The next task.
      */
-    public Task getNextTask(String name) {
-        for(int i = 0; i < size; i++) {
-            if(taskarray[i].assignedTo.equals(name) &&
-             taskarray[i].status.equals("todo")) {
+    public Task getNextTask(final String name) {
+        for (int i = 0; i < size; i++) {
+            if (taskarray[i].assignedTo.equals(name) 
+                && taskarray[i].status.equals("todo")) {
                 if(taskarray[i].important && !taskarray[i].urgent) {
                     return taskarray[i];
                 }
@@ -113,11 +131,15 @@ class Todoist {
         for (int i = 0; i < size; i++) {
         String ni = "Not Important";
         String nu = "Not Urgent";
-        if(taskarray[i].important) ni = "Important";
-        if(taskarray[i].urgent) nu = "Urgent";
+        if (taskarray[i].important) {
+            ni = "Important";
+        } 
+        if (taskarray[i].urgent) {
+            nu = "Urgent";
+        } 
         objdisplay += taskarray[i].title + ", " +
-         taskarray[i].assignedTo+", "+ taskarray[i].timeToComplete+", "+
-          ni+", "+ nu+", "+ taskarray[i].status + "\n"; 
+         taskarray[i].assignedTo + ", " + taskarray[i].timeToComplete + ", " + 
+          ni + ", " + nu + ", " + taskarray[i].status + "\n"; 
         }
         return objdisplay;
     }
@@ -126,6 +148,11 @@ class Todoist {
  * Class for todoist main.
  */
 public class TodoistMain {
+    /**
+     * Constructs the object.
+     */
+    TodoistMain() {
+    }
     /**
      * Starts a test.
      */
