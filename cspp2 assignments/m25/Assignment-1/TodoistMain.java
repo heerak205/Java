@@ -57,9 +57,9 @@ class Task {
         if (urgent) {
             nu = "Urgent";
         }
-        String objdisplay = title + ", " +
-         assignedTo + ", " + timeToComplete + ", " + 
-          ni + ", " + nu + ", " + status;
+        String objdisplay = title + ", " 
+        + assignedTo + ", " + timeToComplete + ", " 
+        + ni + ", " + nu + ", " + status;
         return objdisplay;
     }
 }
@@ -95,7 +95,7 @@ class Todoist {
         } catch (Exception e) {
             resize();
             addTask(task);
-        }     
+        }
     }
     /**
      * {function to resize}.
@@ -112,9 +112,9 @@ class Todoist {
      */
     public Task getNextTask(final String name) {
         for (int i = 0; i < size; i++) {
-            if (taskarray[i].assignedTo.equals(name) 
+            if (taskarray[i].assignedTo.equals(name)
                 && taskarray[i].status.equals("todo")) {
-                if(taskarray[i].important && !taskarray[i].urgent) {
+                if (taskarray[i].important && !taskarray[i].urgent) {
                     return taskarray[i];
                 }
             }
@@ -133,13 +133,13 @@ class Todoist {
         String nu = "Not Urgent";
         if (taskarray[i].important) {
             ni = "Important";
-        } 
+        }
         if (taskarray[i].urgent) {
             nu = "Urgent";
-        } 
+        }
         objdisplay += taskarray[i].title + ", " +
-         taskarray[i].assignedTo + ", " + taskarray[i].timeToComplete + ", " + 
-          ni + ", " + nu + ", " + taskarray[i].status + "\n"; 
+         taskarray[i].assignedTo + ", " + taskarray[i].timeToComplete + ", "
+         + ni + ", " + nu + ", " + taskarray[i].status + "\n";
         }
         return objdisplay;
     }
