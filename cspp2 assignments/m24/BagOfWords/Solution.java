@@ -68,8 +68,8 @@ class Data {
     public int similarity(final String textOne, final String textTwo) {
         double numerator = 0;
         double denominator = 1;
-        double sumOne = 0;
-        double sumTwo = 0;
+        double sum1 = 0;
+        double sum2 = 0;
         final int hundred = 100;
         Map<String, Integer> mapOne = remove(textOne);
         Map<String, Integer> mapTwo = remove(textTwo);
@@ -82,12 +82,12 @@ class Data {
         }
 
         for (String word: mapOne.keySet()) {
-            sumOne += mapOne.get(word) * mapOne.get(word);
+            sum1 += mapOne.get(word) * mapOne.get(word);
         }
         for (String word: mapTwo.keySet()) {
-            sumTwo += mapTwo.get(word) * mapTwo.get(word);
+            sum2 += mapTwo.get(word) * mapTwo.get(word);
         }
-        denominator = Math.sqrt(sumOne) * Math.sqrt(sumTwo);
+        denominator = Math.sqrt(sum1) * Math.sqrt(sum2);
         double documentDistance = (
             (numerator / denominator) * hundred);
         return (int) (documentDistance);
