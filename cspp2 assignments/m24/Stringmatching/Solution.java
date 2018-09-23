@@ -92,7 +92,7 @@ public final class Solution {
             for (int j = 0; j < fileListAsString.length; j++) {
                 // res += "\t" + matper[i][j] + "\t";
                 int noOfSpaces = THIRTEEN - (matper[i][j] + "")
-                                     .length();
+                                 .length();
                 for (int spindex = 0; spindex < noOfSpaces; spindex++) {
                     res += " ";
                 }
@@ -153,17 +153,17 @@ public final class Solution {
                     if (i == j) {
                         matper[i][j] = HUN;
                     } else {
-    // int lcs = 0 , lcstemp = 0;
-    // // System.out.println(strlist[i] + "\n" + strlist[j]);
-    // for (String eachwordi : strlist[i].replace(".", " ").split(" ")) {
-    //  for (String eachwordj : strlist[j].replace(".", " ").split(" ")) {
-    //      if (eachwordi.equals(eachwordj) && eachwordi.length() > lcs) {
-    //          lcs = eachwordi.length();
-    //      }
-    //  }
-    // }
-    // matper[i][j] = (lcs * 200)
-    // / (strlist[i].length() + strlist[j].length());
+                        // int lcs = 0 , lcstemp = 0;
+                        // // System.out.println(strlist[i] + "\n" + strlist[j]);
+                        // for (String eachwordi : strlist[i].replace(".", " ").split(" ")) {
+                        //  for (String eachwordj : strlist[j].replace(".", " ").split(" ")) {
+                        //      if (eachwordi.equals(eachwordj) && eachwordi.length() > lcs) {
+                        //          lcs = eachwordi.length();
+                        //      }
+                        //  }
+                        // }
+                        // matper[i][j] = (lcs * 200)
+                        // / (strlist[i].length() + strlist[j].length());
 
                         int lcsmaximum = 0;
                         if (!(strlist[i].equals("") || strlist[j]
@@ -176,7 +176,7 @@ public final class Solution {
                             }
                         }
                         matper[i][j] = Math.round((lcsmaximum * TWOHUN)
-                            / (strlist[i].length() + strlist[j].length()));
+                                                  / (strlist[i].length() + strlist[j].length()));
                     }
                 }
             }
