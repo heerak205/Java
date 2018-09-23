@@ -36,7 +36,7 @@ public final class Solution {
      * @return     { description_of_the_return_value }
      */
     public static int lcs(final String doc1, final String doc2) {
-        int lcsmaximum = 0, lcs = 0, temp = 0;
+        int lcsmax = 0, lcs = 0, temp = 0;
         for (int indexi = 0; indexi < doc1.length() - 1; indexi++) {
             int indexj = 0;
             while (indexj < doc2.length() - 1) {
@@ -50,15 +50,15 @@ public final class Solution {
                         indexj++;
                         temp++;
                     }
-                    if (lcs > lcsmaximum) {
-                        lcsmaximum = lcs;
+                    if (lcs > lcsmax) {
+                        lcsmax = lcs;
                     }
                 } else {
                     indexj++;
                 }
             }
         }
-        return lcsmaximum + 1;
+        return lcsmax + 1;
     }
     /**
      * to print result in given format.
@@ -165,17 +165,17 @@ public final class Solution {
     // matchpercentmat[i][j] = (lcs * 200)
     // / (strlist[i].length() + strlist[j].length());
 
-                        int lcsmaximum = 0;
+                        int lcsmax = 0;
                         if (!(strlist[i].equals("") || strlist[j]
                                 .equals(""))) {
                             if (strlist[i].length() > strlist[j]
                                     .length()) {
-                                lcsmaximum = lcs(strlist[i], strlist[j]);
+                                lcsmax = lcs(strlist[i], strlist[j]);
                             } else {
-                                lcsmaximum = lcs(strlist[j], strlist[i]);
+                                lcsmax = lcs(strlist[j], strlist[i]);
                             }
                         }
-                        matchpercentmat[i][j] = Math.round((lcsmaximum * TWOHUNDRED)
+                        matchpercentmat[i][j] = Math.round((lcsmax * TWOHUNDRED)
                             / (strlist[i].length() + strlist[j].length()));
                     }
                 }
