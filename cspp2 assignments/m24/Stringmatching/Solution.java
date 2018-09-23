@@ -123,6 +123,7 @@ public final class Solution {
      * @throws     Exception  { exception_description }
      */
     public static void main(final String[] args) throws Exception {
+        System.out.println("maddy");
         try {
             Scanner scan = new Scanner(System.in);
             String foldername = scan.next();
