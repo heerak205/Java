@@ -1,71 +1,88 @@
-import java.util.Scanner;
-import java.io.File;
-import java.util.Arrays;
-class Stringmatching {
-    private File file1;
-    private File file2;
-    private String[] p;
-    private String[] q;
-    private int l1;
-    private int l2;
-    public Stringmatching(File filee1, File filee2) {
-        this.file1 = filee1;
-        this.file2 = filee2;
-        p = null;
-        q = null;
-        l1 = 0;
-        l2 = 0;
-        try {
+import java.io.*;
+import java.util.*;
+import java.lang.Math;
+class Substring {
+    Substring() {
 
-        Scanner sc1 = new Scanner(file1);
-        Scanner sc2 = new Scanner(file2);
-        String s = "";
-        while(sc1.hasNext()) {
-            s += sc1.nextLine();
-        }
-        l1 = s.length();
-        p = s.toLowerCase().replaceAll("[^a-z0-9 ]", "").split(" ");
-        // System.out.println(Arrays.toString(p));
-        String x = "";
-        while(sc2.hasNext()) {
-            x += sc2.nextLine();
-        }
-        l2 = x.length();
-        q = x.toLowerCase().replaceAll("[^a-z0-9 ]", "").split(" ");
-        // System.out.println(Arrays.toString(q));
-        } catch (Exception ex) {
-            System.out.println("file not found");
-        }
     }
-    public int perMatch() {
-        int count = 1;
-        for (int i = 0; i < p.length; i++) {
-            for (int j = 0; j < q.length; j++) {
-                if (p[i].equals(q[j])) {
-                    count = count * p[i].length();
-                }                   
+    public String toString(File givenFile) {
+        String result = "";
+        try {
+            Scanner s = new Scanner(new FileReader(givenFile));
+            StringBuilder sb = new StringBuilder();
+            while (s.hasNext()) {
+                sb.append(s.next());
+                sb.append(" ");
+            }
+            s.close();
+            result = sb.toString();
+        } catch(FileNotFoundException e) {
+            System.out.println("no file");
+        }
+        return result;
+    }
+    public double findLCS(String firstString, String secondString) {
+    int lengthOne = firstString.length();
+    int lengthTwo = secondString.length();
+    double totalLength = lengthOne + lengthTwo;
+    int[][] tempMatrix = new int[lengthOne+1][lengthTwo+1];
+    double result = 0;
+    double lcsValue = 0;
+    for (int i = 0; i <= lengthOne; i++) {
+        for (int j = 0; j <= lengthTwo; j++) {
+            if (i == 0 || j == 0) {
+                tempMatrix[i][j] = 0;
+            } else if (firstString.charAt(i-1) == secondString.charAt(j-1)) {
+                tempMatrix[i][j] = tempMatrix[i-1][j-1]+1;
+            } else {
+                tempMatrix[i][j] = 0;
+            }
+            if (result < tempMatrix[i][j]) {
+                result = tempMatrix[i][j];
             }
         }
-        return count;
     }
-    public int calculate(int count) {
-        float res;
-        int res1 = l1 + l2;
-        res = ((float)count / (float)res1) * 100;
-        return (int) res;
-
+    lcsValue = ((result*2)/totalLength)*100;
+    // System.out.println((int)lcsValue);
+    return Math.round(lcsValue * 100D) / 100;
     }
-
 }
-public class Solution {
+
+
+class Solution{
+    Solution() {
+
+    }
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String line = sc.nextLine();
-        File folder = new File(line);
-        File[] listoffiles = folder.listFiles();
-        for (int i = 0; i < listoffiles.length - 1; i++) {
-            Stringmatching match = new Stringmatching(listoffiles[i], listoffiles[i + 1]);
-            System.out.println(match.calculate(match.perMatch()));
+        try {
+        Substring s = new Substring();
+        String path;
+        Scanner scan = new Scanner(System.in);
+        path = scan.nextLine();
+        File folder = new File(path);
+        File[] filesList = folder.listFiles();
+        int length = filesList.length;
+        double[][] matrix = new double[length][length];
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < length; j++) {
+                matrix[i][j] = s.findLCS(s.toString(filesList[i]),s.toString(filesList[j]));
+            }
         }
+        System.out.print("     \t");
+        for (int i = 0; i < filesList.length - 1; i++) {
+            System.out.print("\t" + filesList[i].getName());
+        }
+        System.out.println("\t" + filesList[length - 1].getName());
+        for (int i = 0; i < length; i++) {
+            System.out.print(filesList[i].getName() + "\t");
+            for (int j = 0; j < length; j++) {
+                System.out.print(matrix[i][j] + "       ");
+            }
+            System.out.println();
+        }
+    } catch (NoSuchElementException e) {
+        System.out.println("Empty Directory");
+    }
+
     }
 }
