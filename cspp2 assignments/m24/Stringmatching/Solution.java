@@ -1,193 +1,129 @@
-/**
- * String matching.
- * @author Swapnika Vakacharla
- */
+import java.util.Scanner;
+import java.io.FileReader;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Scanner;
-/**
- * Class for solution.
- */
-public final class Solution {
-    /**
-     * Constructs the object.
-     */
-    private Solution() {
-        //not used.
-    }
-    /**
-     * variable declaration.
-     */
-    private static final int THIRTEEN = 13;
-    /**
-     * variable declaration.
-     */
-    private static final int HUN = 100;
-    /**
-     * variable declaration.
-     */
-    private static final double TWOHUN = 200.0;
-    /**
-     * to calculate lcs.
-     *
-     * @param      doc1  The document 1
-     * @param      doc2  The document 2
-     *
-     * @return     { description_of_the_return_value }
-     */
-    public static int lcs(final String doc1, final String doc2) {
-        int lcsmaximum = 0, lcs = 0, temp = 0;
-        for (int indexi = 0; indexi < doc1.length() - 1; indexi++) {
-            int indexj = 0;
-            while (indexj < doc2.length() - 1) {
-                temp = indexi;
-                lcs = 0;
-                if (doc1.charAt(temp) == (doc2.charAt(indexj))
-                        && doc1.charAt(temp) != ' ') {
-                    while (doc1.charAt(temp) == (doc2.charAt(indexj)) && indexj
-                            < doc2.length() - 1 && temp < doc1.length() - 1) {
-                        lcs++;
-                        indexj++;
-                        temp++;
-                    }
-                    if (lcs > lcsmaximum) {
-                        lcsmaximum = lcs;
-                    }
-                } else {
-                    indexj++;
-                }
-            }
-        }
-        return lcsmaximum + 1;
-    }
-    /**
-     * to print result in given format.
-     *
-     * @param      matper  The matper
-     * @param      filelist         The filelist
-     */
-    public static void printResult(final float[][] matper,
-                                   final File[] filelist) {
-        String[] fileListAsString = new String[filelist.length];
-        for (int i = 0; i < filelist.length; i++) {
-            for (int j = 0; i < filelist[i].toString().length(); j++) {
-                if (filelist[i].toString().charAt(j) == '\\') {
-                    fileListAsString[i] = filelist[i].toString()
-                                          .substring(j + 1);
-                    break;
-                }
-            }
-        }
-        String res = "         ";
-        for (String eachFile : fileListAsString) {
-            // res += eachFile + "\t";
-            int noOfSpaces = THIRTEEN - eachFile.length();
-            for (int spindex = 0; spindex < noOfSpaces; spindex++) {
-                res += " ";
-            }
-            res += eachFile;
-        } res += " \n";
-        for (int i = 0; i < fileListAsString.length; i++) {
-            res += fileListAsString[i];
-            for (int j = 0; j < fileListAsString.length; j++) {
-                // res += "\t" + matper[i][j] + "\t";
-                int noOfSpaces = THIRTEEN - (matper[i][j] + "")
-                                 .length();
-                for (int spindex = 0; spindex < noOfSpaces; spindex++) {
-                    res += " ";
-                }
-                res += matper[i][j] + "";
+import java.util.NoSuchElementException;
 
-            } res += " \n";
-        }
-        System.out.print(res);
-        float maxpercetmatch = 0;
-        String file1 = "", file2 = "";
-        for (int i = 0; i < filelist.length; i++) {
-            for (int j = 0; j < filelist.length; j++) {
-                if (i < j && maxpercetmatch < matper[i][j]) {
-                    file1 = fileListAsString[i];
-                    file2 = fileListAsString[j];
-                    maxpercetmatch = matper[i][j];
-                }
-            }
-        }
-        System.out.println("Maximum similarity is between "
-                           + file1 + " and " + file2);
+/**this class is to maintain.
+*complete details of two files.
+*/
+class Data {
+    /** this is an empty constructor.
+    */
+    Data() {
     }
-    /**
-     * main function.
-     *
-     * @param      args       The arguments
-     *
-     * @throws     Exception  { exception_description }
-     */
-    public static void main(final String[] args) throws Exception {
+    /**this method is to convert the.
+    *file document text to string
+    *@param file File
+    *@return str returns string of that text.
+    */
+    public static String toText(final File file) {
+        String str = "";
         try {
-            Scanner scan = new Scanner(System.in);
-            String foldername = scan.next();
-            File folder = new File(foldername);
-            File[] filelist = folder.listFiles();
-            String[] strlist = new String[filelist.length];
-            // System.out.println(Arrays.toString(filelist));
-            try {
-                int filecount = 0;
-                for (File file : filelist) {
-                    Scanner filescan = new Scanner(file);
-                    String str = "";
-                    while (filescan.hasNextLine()) {
-                        str += filescan.nextLine() + " ";
-                    }
-                    // System.out.println(str);
-                    strlist[filecount++] = str.trim();
-                }
-                // System.out.println(Arrays.toString(strlist));
-            } catch (FileNotFoundException e) {
-                System.out.println("file not found");
+            Scanner input = new Scanner(new FileReader(file));
+            StringBuilder text = new StringBuilder();
+            while (input.hasNext()) {
+                text.append(input.next());
+                text.append(" ");
             }
-
-            float[][] matper = new float[filelist.length]
-            [filelist.length];
-            for (int i = 0; i < filelist.length; i++) {
-                for (int j = 0; j < filelist.length; j++) {
-                    if (i == j) {
-                        matper[i][j] = HUN;
-                    } else {
-                        // int lcs = 0 , lcstemp = 0;
-                        // // System.out.println(strlist[i] + "\n" + strlist[j]);
-                        // for (String eachwordi : strlist[i].replace(".", " ").split(" ")) {
-                        //  for (String eachwordj : strlist[j].replace(".", " ").split(" ")) {
-                        //      if (eachwordi.equals(eachwordj) && eachwordi.length() > lcs) {
-                        //          lcs = eachwordi.length();
-                        //      }
-                        //  }
-                        // }
-                        // matper[i][j] = (lcs * 200)
-                        // / (strlist[i].length() + strlist[j].length());
-
-                        int lcsmaximum = 0;
-                        if (!(strlist[i].equals("") || strlist[j]
-                                .equals(""))) {
-                            if (strlist[i].length() > strlist[j]
-                                    .length()) {
-                                lcsmaximum = lcs(strlist[i], strlist[j]);
-                            } else {
-                                lcsmaximum = lcs(strlist[j], strlist[i]);
-                            }
-                        }
-                        matper[i][j] = Math.round((lcsmaximum * TWOHUN)
-                                                  / (strlist[i].length() + strlist[j].length()));
-                    }
-                }
-            }
-            // System.out.println(Arrays.toString(matper));
-            // for (int i = 0; i < matper.length; i++) {
-            //  System.out.println(Arrays.toString(matper[i]));
-            // }
-            printResult(matper, filelist);
-        } catch (Exception e) {
-            System.out.println("Empty Directory");
+            input.close();
+            str = text.toString();
+        } catch (FileNotFoundException e) {
+            System.out.println("No file");
         }
+        return str;
+    }
+    /**this method is to give the.
+     *document distance.
+     *@param textOne first file string
+     *@param textTwo second file string
+     *@return document distance
+     */
+
+    public double stringMatching(final String textOne, final String textTwo) {
+        int lengthOne = textOne.length();
+        int lengthTwo = textTwo.length();
+        double totalLength = lengthOne + lengthTwo;
+        int max = 0;
+        double lcs = 0;
+        final int hundred = 100;
+        int[][] array = new int[lengthOne][lengthTwo];
+        for (int i = 0; i < lengthOne; i++) {
+            for (int j = 0; j < lengthTwo; j++) {
+                if (textOne.charAt(i) == textTwo.charAt(j)) {
+                    if (i == 0 || j == 0) {
+                        array[i][j] = 1;
+                    } else {
+                        array[i][j] = array[i - 1][j - 1] + 1;
+                    }
+                    if (max < array[i][j]) {
+                        max = array[i][j];
+                    }
+                }
+            }
+        }
+        lcs = (((max * 2) / totalLength) * hundred);
+        return lcs;
+    }
+}
+/** this is the solution class.
+*/
+public final class Solution {
+    /** an empty constructor.
+    */
+    private Solution() {
+
+    }
+    /**
+     * this is main method.
+     *
+     * @param      args  The arguments
+     */
+    public static void main(final String[] args) {
+        try  {
+        Scanner scan = new Scanner(System.in);
+        String input = scan.nextLine();
+        File files = new File(input);
+        Data obj = new Data();
+        File[] fileList = files.listFiles();
+        int length = fileList.length;
+        double maxValue = 0;
+        final int hundred = 100;
+        String result = "";
+        double[][] fileMatrix = new double[length][length];
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < length; j++) {
+                if (i == j) {
+                    fileMatrix[i][j] = hundred;
+                } else {
+                    fileMatrix[i][j] = obj.stringMatching(
+                        obj.toText(fileList[i]), obj.toText(fileList[j]));
+                    if (maxValue < fileMatrix[i][j]) {
+                        maxValue = fileMatrix[i][j];
+                        result = "Maximum similarity is between "
+                        + fileList[i].getName() + " and "
+                        + fileList[j].getName();
+                    }
+                }
+            }
+        }
+        System.out.print("      \t");
+        for (int i = 0; i < length - 1; i++) {
+            System.out.print("\t" + fileList[i].getName());
+        }
+        System.out.println("\t" + fileList[length - 1].getName());
+        for (int i = 0; i < length; i++) {
+            System.out.print(fileList[i].getName() + "\t");
+            for (int j = 0; j < length; j++) {
+                    System.out.print(
+                        String.format("%.1f", fileMatrix[i][j]) + "\t\t");
+            }
+            System.out.println();
+        }
+     System.out.println(result);
+    } catch (NoSuchElementException e) {
+        System.out.println("Empty Directory");
+    }
     }
 }
 
