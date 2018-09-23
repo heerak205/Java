@@ -1,71 +1,160 @@
-import java.util.Scanner;
-import java.io.File;
-import java.util.Arrays;
-class Stringmatching {
-	private File file1;
-	private File file2;
-	private String[] p;
-	private String[] q;
-	private int l1;
-	private int l2;
-	public Stringmatching(File filee1, File filee2) {
-		this.file1 = filee1;
-		this.file2 = filee2;
-		p = null;
-		q = null;
-		l1 = 0;
-		l2 = 0;
-		try {
-
-		Scanner sc1 = new Scanner(file1);
-		Scanner sc2 = new Scanner(file2);
-		String s = "";
-		while(sc1.hasNext()) {
-			s += sc1.nextLine();
-		}
-		l1 = s.length();
-		p = s.toLowerCase().replaceAll("[^a-z0-9 ]", "").split(" ");
-		// System.out.println(Arrays.toString(p));
-		String x = "";
-		while(sc2.hasNext()) {
-			x += sc2.nextLine();
-		}
-		l2 = x.length();
-		q = x.toLowerCase().replaceAll("[^a-z0-9 ]", "").split(" ");
-		// System.out.println(Arrays.toString(q));
-		} catch (Exception ex) {
-			System.out.println("file not found");
-		}
-	}
-	public int perMatch() {
-		int count = 1;
-		for (int i = 0; i < p.length; i++) {
-			for (int j = 0; j < q.length; j++) {
-				if (p[i].equals(q[j])) {
-					count = count * p[i].length();
-				}					
-			}
-		}
-		return count;
-	}
-	public int calculate(int count) {
-		float res;
-		int res1 = l1 + l2;
-		res = ((float)count / (float)res1) * 100;
-		return (int) res;
-
-	}
-
+import java.util.*;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+import java.lang.Math;
+import java.io.*;
+/**
+ * Class for document.
+ */
+class Document {
+    /**
+     * text 1.
+     */
+    private String text1;
+    /**
+     * text 2.
+     */
+    private String text2;
+    /**
+     * constructor for document class.
+     */
+    Document() {
+        text1 = "";
+        text2 = "";
+    }
+    /**
+     * method to convert from file to string.
+     *
+     * @param      doc   The document
+     *
+     * @return  returns string format of a file.
+     */
+    public static String DocumentToString(final File doc) {
+        String fileToString = "";
+        try {
+            Scanner s = new Scanner(new FileReader(doc));
+            StringBuilder sb = new StringBuilder();
+            while (s.hasNext()) {
+                sb.append(s.next());
+                sb.append(" ");
+            }
+            s.close();
+            fileToString = sb.toString();
+        } catch (FileNotFoundException e) {
+            System.out.println("no file");
+        }
+        return fileToString;
+    }
+    /**
+     * method to remove unnecessary characters.
+     *
+     * @param      text  The text
+     *
+     * @return  returns the cleaned up string.
+     */
+    public static Map removewords(final String text) {
+        // text = text.toLowerCase();
+        String word = "";
+        Pattern p = Pattern.compile("[^0-9_.,]");
+        Matcher match = p.matcher(text);
+        while (match.find()) {
+            word += match.group();
+        }
+        word = word.toLowerCase();
+        String[] words = word.split(" ");
+        Map<String, Integer> map = new HashMap<>();
+        for (int i = 0; i  < words.length; i++) {
+            if (!map.containsKey(words[i])) {
+                map.put(words[i], 1);
+            } else {
+                map.put(words[i], map.get(words[i]) + 1);
+            }
+        }
+        return map;
+    }
+    /**
+     * method to compare two strings.
+     *
+     * @param      stringOne  The string one
+     * @param      stringTwo  The string two
+     *
+     * @return  returns the plagiarism percentage of given strings.
+     */
+    public static int compare(
+        final String stringOne,
+         final String stringTwo) {
+        float numerator = 0;
+        double denominator = 0;
+        float firstSum = 0;
+        float secondSum = 0;
+        Map<String, Integer> firstMap = removewords(stringOne);
+        Map<String, Integer> secondMap = removewords(stringTwo);
+        for (String inmapOne : firstMap.keySet()) {
+            for (String inmapTwo : secondMap.keySet()) {
+                if (inmapOne.equals(inmapTwo)) {
+                    numerator += firstMap.get(inmapOne)
+                     * secondMap.get(inmapTwo);
+                }
+            }
+        }
+        final int hundred = 100;
+        for (String inmapOne : firstMap.keySet()) {
+            firstSum += Math.pow(firstMap.get(inmapOne), 2);
+        }
+        for (String inmapTwo : secondMap.keySet()) {
+            secondSum += Math.pow(secondMap.get(inmapTwo), 2);
+        }
+        denominator = Math.sqrt(firstSum) * Math.sqrt(secondSum);
+        double output = (numerator / denominator) * hundred;
+        return  (int) ((output * hundred) / hundred);
+    }
 }
-public class Solution {
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
-		String line = sc.nextLine();
-		File folder = new File(line);
-		File[] listoffiles = folder.listFiles();
-		for (int i = 0; i < listoffiles.length - 1; i++) {
-			Stringmatching match = new Stringmatching(listoffiles[i], listoffiles[i + 1]);
-			System.out.println(match.calculate(match.perMatch()));
-		}
-	}
+/**
+ * Class for solution.
+ */
+class Solution {
+    /**
+     * constructor fro solution class.
+     */
+    protected Solution() {
+
+    }
+    /**
+     * main method for solution class.
+     *
+     * @param      args  The arguments
+     */
+    public static void main(final String[] args) {
+        try {
+        Document d = new Document();
+        String path;
+        Scanner scan = new Scanner(System.in);
+        path = scan.nextLine();
+        File folder = new File(path);
+        File[] list = folder.listFiles();
+        int length = list.length;
+        int[][] matrix = new int[length][length];
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < length; j++) {
+                matrix[i][j] = Document.compare(
+                Document.DocumentToString(list[i]),
+                 Document.DocumentToString(list[j]));
+            }
+        }
+        System.out.print("      \t");
+        for (int i = 0; i < list.length - 1; i++) {
+            System.out.print("\t" + list[i].getName());
+        }
+        System.out.println("\t" + list[length - 1].getName());
+        for (int i = 0; i < length; i++) {
+            System.out.print(list[i].getName() + "\t");
+            for (int j = 0; j < length; j++) {
+    System.out.print(matrix[i][j] + "\t\t");
+            }
+            System.out.println();
+        }
+    } catch (NoSuchElementException e) {
+        System.out.println("empty directory");
+    }
+    }
 }
