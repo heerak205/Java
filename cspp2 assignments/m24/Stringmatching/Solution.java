@@ -124,7 +124,6 @@ public final class Solution {
      */
     public static void main(final String[] args) throws Exception {
         try {
-            System.out.println("maddy");
             Scanner scan = new Scanner(System.in);
             String foldername = scan.next();
             File folder = new File(foldername);
@@ -132,6 +131,7 @@ public final class Solution {
             String[] strlist = new String[filelist.length];
             // System.out.println(Arrays.toString(filelist));
             try {
+                System.out.println("skhjf");
                 int filecount = 0;
                 for (File file : filelist) {
                     Scanner filescan = new Scanner(file);
