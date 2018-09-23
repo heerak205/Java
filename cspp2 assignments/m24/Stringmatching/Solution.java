@@ -61,12 +61,12 @@ public final class Solution {
         return lcsmaximum + 1;
     }
     /**
-     * to print resultult in given format.
+     * to print result in given format.
      *
-     * @param      matchpercentmatching  The matchpercentmatching
+     * @param      matchpercentmat  The matchpercentmat
      * @param      filelist         The filelist
      */
-    public static void printresultult(final float[][] matchpercentmatching,
+    public static void printResult(final float[][] matchpercentmat,
                                    final File[] filelist) {
         String[] fileListAsString = new String[filelist.length];
         for (int i = 0; i < filelist.length; i++) {
@@ -78,37 +78,37 @@ public final class Solution {
                 }
             }
         }
-        String result = "         ";
+        String res = "         ";
         for (String eachFile : fileListAsString) {
-            // result += eachFile + "\t";
+            // res += eachFile + "\t";
             int numberOfSpaces = THIRTEEN - eachFile.length();
             for (int spindex = 0; spindex < numberOfSpaces; spindex++) {
-                result += " ";
+                res += " ";
             }
-            result += eachFile;
-        } result += " \n";
+            res += eachFile;
+        } res += " \n";
         for (int i = 0; i < fileListAsString.length; i++) {
-            result += fileListAsString[i];
+            res += fileListAsString[i];
             for (int j = 0; j < fileListAsString.length; j++) {
-                // result += "\t" + matchpercentmatching[i][j] + "\t";
-                int numberOfSpaces = THIRTEEN - (matchpercentmatching[i][j] + "")
+                // res += "\t" + matchpercentmat[i][j] + "\t";
+                int numberOfSpaces = THIRTEEN - (matchpercentmat[i][j] + "")
                                      .length();
                 for (int spindex = 0; spindex < numberOfSpaces; spindex++) {
-                    result += " ";
+                    res += " ";
                 }
-                result += matchpercentmatching[i][j] + "";
+                res += matchpercentmat[i][j] + "";
 
-            } result += " \n";
+            } res += " \n";
         }
-        System.out.print(result);
-        float maxpercentmatching = 0;
+        System.out.print(res);
+        float maxpercetmatch = 0;
         String file1 = "", file2 = "";
         for (int i = 0; i < filelist.length; i++) {
             for (int j = 0; j < filelist.length; j++) {
-                if (i < j && maxpercentmatching < matchpercentmatching[i][j]) {
+                if (i < j && maxpercetmatch < matchpercentmat[i][j]) {
                     file1 = fileListAsString[i];
                     file2 = fileListAsString[j];
-                    maxpercentmatching = matchpercentmatching[i][j];
+                    maxpercetmatch = matchpercentmat[i][j];
                 }
             }
         }
@@ -146,12 +146,12 @@ public final class Solution {
                 System.out.println("file not found");
             }
 
-            float[][] matchpercentmatching = new float[filelist.length]
+            float[][] matchpercentmat = new float[filelist.length]
             [filelist.length];
             for (int i = 0; i < filelist.length; i++) {
                 for (int j = 0; j < filelist.length; j++) {
                     if (i == j) {
-                        matchpercentmatching[i][j] = HUNDRED;
+                        matchpercentmat[i][j] = HUNDRED;
                     } else {
     // int lcs = 0 , lcstemp = 0;
     // // System.out.println(strlist[i] + "\n" + strlist[j]);
@@ -162,7 +162,7 @@ public final class Solution {
     //      }
     //  }
     // }
-    // matchpercentmatching[i][j] = (lcs * 200)
+    // matchpercentmat[i][j] = (lcs * 200)
     // / (strlist[i].length() + strlist[j].length());
 
                         int lcsmaximum = 0;
@@ -175,16 +175,16 @@ public final class Solution {
                                 lcsmaximum = lcs(strlist[j], strlist[i]);
                             }
                         }
-                        matchpercentmatching[i][j] = Math.round((lcsmaximum * TWOHUNDRED)
+                        matchpercentmat[i][j] = Math.round((lcsmaximum * TWOHUNDRED)
                             / (strlist[i].length() + strlist[j].length()));
                     }
                 }
             }
-            // System.out.println(Arrays.toString(matchpercentmatching));
-            // for (int i = 0; i < matchpercentmatching.length; i++) {
-            //  System.out.println(Arrays.toString(matchpercentmatching[i]));
+            // System.out.println(Arrays.toString(matchpercentmat));
+            // for (int i = 0; i < matchpercentmat.length; i++) {
+            //  System.out.println(Arrays.toString(matchpercentmat[i]));
             // }
-            printresultult(matchpercentmatching, filelist);
+            printResult(matchpercentmat, filelist);
         } catch (Exception e) {
             System.out.println("Empty Directory");
         }
