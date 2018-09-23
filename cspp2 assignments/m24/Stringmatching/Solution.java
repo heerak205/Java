@@ -137,9 +137,8 @@ public final class Solution {
                     String str = "";
                     while (filescan.hasNextLine()) {
                         str += filescan.nextLine() + " ";
-                        System.out.println("shjkj");
                     }
-                    // System.out.println(str);
+                    System.out.println(str);
                     strlist[filecount++] = str.trim();
                 }
                 // System.out.println(Arrays.toString(strlist));
