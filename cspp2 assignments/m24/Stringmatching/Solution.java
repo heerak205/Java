@@ -41,15 +41,15 @@ class Data {
      */
 
     public double stringMatching(final String textOne, final String textTwo) {
-        int lengthOne = textOne.length();
-        int lengthTwo = textTwo.length();
-        double totalLength = lengthOne + lengthTwo;
+        int length1 = textOne.length();
+        int length2 = textTwo.length();
+        double totalLength = length1 + length2;
         int max = 0;
         double lcs = 0;
         final int hundred = 100;
-        int[][] array = new int[lengthOne][lengthTwo];
-        for (int i = 0; i < lengthOne; i++) {
-            for (int j = 0; j < lengthTwo; j++) {
+        int[][] array = new int[length1][length2];
+        for (int i = 0; i < length1; i++) {
+            for (int j = 0; j < length2; j++) {
                 if (textOne.charAt(i) == textTwo.charAt(j)) {
                     if (i == 0 || j == 0) {
                         array[i][j] = 1;
