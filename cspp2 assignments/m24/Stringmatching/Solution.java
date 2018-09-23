@@ -184,7 +184,6 @@ public final class Solution {
             // for (int i = 0; i < matper.length; i++) {
             //  System.out.println(Arrays.toString(matper[i]));
             // }
-            System.out.println("ksakj");
             printResult(matper, filelist);
         } catch (Exception e) {
             System.out.println("Empty Directory");
