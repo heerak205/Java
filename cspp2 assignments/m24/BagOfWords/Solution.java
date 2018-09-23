@@ -1,160 +1,193 @@
-import java.util.*;
-import java.util.regex.Pattern;
-import java.util.regex.Matcher;
-import java.lang.Math;
-import java.io.*;
 /**
- * Class for document.
+ * String matching.
+ * @author Swapnika Vakacharla
  */
-class Document {
-    /**
-     * text 1.
-     */
-    private String text1;
-    /**
-     * text 2.
-     */
-    private String text2;
-    /**
-     * constructor for document class.
-     */
-    Document() {
-        text1 = "";
-        text2 = "";
-    }
-    /**
-     * method to convert from file to string.
-     *
-     * @param      doc   The document
-     *
-     * @return  returns string format of a file.
-     */
-    public static String DocumentToString(final File doc) {
-        String fileToString = "";
-        try {
-            Scanner s = new Scanner(new FileReader(doc));
-            StringBuilder sb = new StringBuilder();
-            while (s.hasNext()) {
-                sb.append(s.next());
-                sb.append(" ");
-            }
-            s.close();
-            fileToString = sb.toString();
-        } catch (FileNotFoundException e) {
-            System.out.println("no file");
-        }
-        return fileToString;
-    }
-    /**
-     * method to remove unnecessary characters.
-     *
-     * @param      text  The text
-     *
-     * @return  returns the cleaned up string.
-     */
-    public static Map removewords(final String text) {
-        // text = text.toLowerCase();
-        String word = "";
-        Pattern p = Pattern.compile("[^0-9_.,]");
-        Matcher match = p.matcher(text);
-        while (match.find()) {
-            word += match.group();
-        }
-        word = word.toLowerCase();
-        String[] words = word.split(" ");
-        Map<String, Integer> map = new HashMap<>();
-        for (int i = 0; i  < words.length; i++) {
-            if (!map.containsKey(words[i])) {
-                map.put(words[i], 1);
-            } else {
-                map.put(words[i], map.get(words[i]) + 1);
-            }
-        }
-        return map;
-    }
-    /**
-     * method to compare two strings.
-     *
-     * @param      stringOne  The string one
-     * @param      stringTwo  The string two
-     *
-     * @return  returns the plagiarism percentage of given strings.
-     */
-    public static int compare(
-        final String stringOne,
-         final String stringTwo) {
-        float numerator = 0;
-        double denominator = 0;
-        float firstSum = 0;
-        float secondSum = 0;
-        Map<String, Integer> firstMap = removewords(stringOne);
-        Map<String, Integer> secondMap = removewords(stringTwo);
-        for (String inmapOne : firstMap.keySet()) {
-            for (String inmapTwo : secondMap.keySet()) {
-                if (inmapOne.equals(inmapTwo)) {
-                    numerator += firstMap.get(inmapOne)
-                     * secondMap.get(inmapTwo);
-                }
-            }
-        }
-        final int hundred = 100;
-        for (String inmapOne : firstMap.keySet()) {
-            firstSum += Math.pow(firstMap.get(inmapOne), 2);
-        }
-        for (String inmapTwo : secondMap.keySet()) {
-            secondSum += Math.pow(secondMap.get(inmapTwo), 2);
-        }
-        denominator = Math.sqrt(firstSum) * Math.sqrt(secondSum);
-        double output = (numerator / denominator) * hundred;
-        return  (int) ((output * hundred) / hundred);
-    }
-}
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 /**
  * Class for solution.
  */
-class Solution {
+public final class Solution {
     /**
-     * constructor fro solution class.
+     * Constructs the object.
      */
-    protected Solution() {
-
+    private Solution() {
+        //not used.
     }
     /**
-     * main method for solution class.
+     * variable declaration.
+     */
+    private static final int THIRTEEN = 13;
+    /**
+     * variable declaration.
+     */
+    private static final int HUN = 100;
+    /**
+     * variable declaration.
+     */
+    private static final double TWOHUN = 200.0;
+    /**
+     * to calculate lcs.
      *
-     * @param      args  The arguments
+     * @param      doc1  The document 1
+     * @param      doc2  The document 2
+     *
+     * @return     { description_of_the_return_value }
      */
-    public static void main(final String[] args) {
-        try {
-        Document d = new Document();
-        String path;
-        Scanner scan = new Scanner(System.in);
-        path = scan.nextLine();
-        File folder = new File(path);
-        File[] list = folder.listFiles();
-        int length = list.length;
-        int[][] matrix = new int[length][length];
-        for (int i = 0; i < length; i++) {
-            for (int j = 0; j < length; j++) {
-                matrix[i][j] = Document.compare(
-                Document.DocumentToString(list[i]),
-                 Document.DocumentToString(list[j]));
+    public static int lcs(final String doc1, final String doc2) {
+        int lcsmaximum = 0, lcs = 0, temp = 0;
+        for (int indexi = 0; indexi < doc1.length() - 1; indexi++) {
+            int indexj = 0;
+            while (indexj < doc2.length() - 1) {
+                temp = indexi;
+                lcs = 0;
+                if (doc1.charAt(temp) == (doc2.charAt(indexj))
+                        && doc1.charAt(temp) != ' ') {
+                    while (doc1.charAt(temp) == (doc2.charAt(indexj)) && indexj
+                            < doc2.length() - 1 && temp < doc1.length() - 1) {
+                        lcs++;
+                        indexj++;
+                        temp++;
+                    }
+                    if (lcs > lcsmaximum) {
+                        lcsmaximum = lcs;
+                    }
+                } else {
+                    indexj++;
+                }
             }
         }
-        System.out.print("      \t");
-        for (int i = 0; i < list.length - 1; i++) {
-            System.out.print("\t" + list[i].getName());
-        }
-        System.out.println("\t" + list[length - 1].getName());
-        for (int i = 0; i < length; i++) {
-            System.out.print(list[i].getName() + "\t");
-            for (int j = 0; j < length; j++) {
-    System.out.print(matrix[i][j] + "\t\t");
-            }
-            System.out.println();
-        }
-    } catch (NoSuchElementException e) {
-        System.out.println("empty directory");
+        return lcsmaximum + 1;
     }
+    /**
+     * to print result in given format.
+     *
+     * @param      matper  The matper
+     * @param      filelist         The filelist
+     */
+    public static void printResult(final float[][] matper,
+                                   final File[] filelist) {
+        String[] fileListAsString = new String[filelist.length];
+        for (int i = 0; i < filelist.length; i++) {
+            for (int j = 0; i < filelist[i].toString().length(); j++) {
+                if (filelist[i].toString().charAt(j) == '\\') {
+                    fileListAsString[i] = filelist[i].toString()
+                                          .substring(j + 1);
+                    break;
+                }
+            }
+        }
+        String res = "         ";
+        for (String eachFile : fileListAsString) {
+            // res += eachFile + "\t";
+            int noOfSpaces = THIRTEEN - eachFile.length();
+            for (int spindex = 0; spindex < noOfSpaces; spindex++) {
+                res += " ";
+            }
+            res += eachFile;
+        } res += " \n";
+        for (int i = 0; i < fileListAsString.length; i++) {
+            res += fileListAsString[i];
+            for (int j = 0; j < fileListAsString.length; j++) {
+                // res += "\t" + matper[i][j] + "\t";
+                int noOfSpaces = THIRTEEN - (matper[i][j] + "")
+                                     .length();
+                for (int spindex = 0; spindex < noOfSpaces; spindex++) {
+                    res += " ";
+                }
+                res += matper[i][j] + "";
+
+            } res += " \n";
+        }
+        System.out.print(res);
+        float maxpercetmatch = 0;
+        String file1 = "", file2 = "";
+        for (int i = 0; i < filelist.length; i++) {
+            for (int j = 0; j < filelist.length; j++) {
+                if (i < j && maxpercetmatch < matper[i][j]) {
+                    file1 = fileListAsString[i];
+                    file2 = fileListAsString[j];
+                    maxpercetmatch = matper[i][j];
+                }
+            }
+        }
+        System.out.println("Maximum similarity is between "
+                           + file1 + " and " + file2);
+    }
+    /**
+     * main function.
+     *
+     * @param      args       The arguments
+     *
+     * @throws     Exception  { exception_description }
+     */
+    public static void main(final String[] args) throws Exception {
+        try {
+            Scanner scan = new Scanner(System.in);
+            String foldername = scan.next();
+            File folder = new File(foldername);
+            File[] filelist = folder.listFiles();
+            String[] strlist = new String[filelist.length];
+            // System.out.println(Arrays.toString(filelist));
+            try {
+                int filecount = 0;
+                for (File file : filelist) {
+                    Scanner filescan = new Scanner(file);
+                    String str = "";
+                    while (filescan.hasNextLine()) {
+                        str += filescan.nextLine() + " ";
+                    }
+                    // System.out.println(str);
+                    strlist[filecount++] = str.trim();
+                }
+                // System.out.println(Arrays.toString(strlist));
+            } catch (FileNotFoundException e) {
+                System.out.println("file not found");
+            }
+
+            float[][] matper = new float[filelist.length]
+            [filelist.length];
+            for (int i = 0; i < filelist.length; i++) {
+                for (int j = 0; j < filelist.length; j++) {
+                    if (i == j) {
+                        matper[i][j] = HUN;
+                    } else {
+    // int lcs = 0 , lcstemp = 0;
+    // // System.out.println(strlist[i] + "\n" + strlist[j]);
+    // for (String eachwordi : strlist[i].replace(".", " ").split(" ")) {
+    //  for (String eachwordj : strlist[j].replace(".", " ").split(" ")) {
+    //      if (eachwordi.equals(eachwordj) && eachwordi.length() > lcs) {
+    //          lcs = eachwordi.length();
+    //      }
+    //  }
+    // }
+    // matper[i][j] = (lcs * 200)
+    // / (strlist[i].length() + strlist[j].length());
+
+                        int lcsmaximum = 0;
+                        if (!(strlist[i].equals("") || strlist[j]
+                                .equals(""))) {
+                            if (strlist[i].length() > strlist[j]
+                                    .length()) {
+                                lcsmaximum = lcs(strlist[i], strlist[j]);
+                            } else {
+                                lcsmaximum = lcs(strlist[j], strlist[i]);
+                            }
+                        }
+                        matper[i][j] = Math.round((lcsmaximum * TWOHUN)
+                            / (strlist[i].length() + strlist[j].length()));
+                    }
+                }
+            }
+            // System.out.println(Arrays.toString(matper));
+            // for (int i = 0; i < matper.length; i++) {
+            //  System.out.println(Arrays.toString(matper[i]));
+            // }
+            printResult(matper, filelist);
+        } catch (Exception e) {
+            System.out.println("Empty Directory");
+        }
     }
 }
+
